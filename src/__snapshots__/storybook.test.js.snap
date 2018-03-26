@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Task archived task 1`] = `
+<div
+  className="list-items"
+  style={
+    Object {
+      "background": "white",
+    }
+  }
+>
+  <div
+    className="list-item"
+  >
+    <label
+      className="checkbox"
+    >
+      <input
+        defaultChecked={true}
+        disabled={true}
+        name="checked"
+        type="checkbox"
+      />
+      <span
+        className="checkbox-custom"
+      />
+    </label>
+    <input
+      onClick={[Function]}
+      placeholder="Input title"
+      readOnly={true}
+      type="text"
+      value="Test Task"
+    />
+    <p
+      style={
+        Object {
+          "color": "#666",
+          "flex": 1,
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      on Test Board
+    </p>
+    <a
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      <span
+        className="icon-link icon-arrow-down"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Task inbox task 1`] = `
+<div
+  className="list-items"
+  style={
+    Object {
+      "background": "white",
+    }
+  }
+>
+  <div
+    className="list-item"
+  >
+    <label
+      className="checkbox"
+    >
+      <input
+        defaultChecked={false}
+        disabled={true}
+        name="checked"
+        type="checkbox"
+      />
+      <span
+        className="checkbox-custom"
+      />
+    </label>
+    <input
+      onClick={[Function]}
+      placeholder="Input title"
+      readOnly={true}
+      type="text"
+      value="Test Task"
+    />
+    <p
+      style={
+        Object {
+          "color": "#666",
+          "flex": 1,
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      on Test Board
+    </p>
+    <a
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      <span
+        className="icon-link icon-sync"
+      />
+    </a>
+    <a
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      <span
+        className="icon-link icon-arrow-down"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Task pinned task 1`] = `
+<div
+  className="list-items"
+  style={
+    Object {
+      "background": "white",
+    }
+  }
+>
+  <div
+    className="list-item"
+  >
+    <label
+      className="checkbox"
+    >
+      <input
+        defaultChecked={false}
+        disabled={true}
+        name="checked"
+        type="checkbox"
+      />
+      <span
+        className="checkbox-custom"
+      />
+    </label>
+    <input
+      onClick={[Function]}
+      placeholder="Input title"
+      readOnly={true}
+      type="text"
+      value="Test Task"
+    />
+    <p
+      style={
+        Object {
+          "color": "#666",
+          "flex": 1,
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      on Test Board
+    </p>
+    <a
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      <span
+        className="icon-link icon-sync"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Task snoozed task 1`] = `
+<div
+  className="list-items"
+  style={
+    Object {
+      "background": "white",
+    }
+  }
+>
+  <div
+    className="list-item"
+  >
+    <label
+      className="checkbox"
+    >
+      <input
+        defaultChecked={false}
+        disabled={true}
+        name="checked"
+        type="checkbox"
+      />
+      <span
+        className="checkbox-custom"
+      />
+    </label>
+    <input
+      onClick={[Function]}
+      placeholder="Input title"
+      readOnly={true}
+      type="text"
+      value="Test Task"
+    />
+    <p
+      style={
+        Object {
+          "color": "#666",
+          "flex": 1,
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      on Test Board
+    </p>
+    <a
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "14px",
+          "lineHeight": "1.5rem",
+          "padding": "0.75em 0.25em",
+        }
+      }
+    >
+      <span
+        className="icon-link icon-arrow-down"
+      />
+    </a>
+  </div>
+</div>
+`;
