@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const alignStyles = {
   fontSize: '14px',
@@ -44,3 +45,15 @@ export default function Task({
     </div>
   );
 }
+
+Task.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+  }),
+  onSnoozeTask: PropTypes.func,
+  onPinTask: PropTypes.func,
+};
