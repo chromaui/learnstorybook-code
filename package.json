@@ -2,15 +2,22 @@
   "name": "learnstorybook",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"},
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
-    "less": "^2.7.1"
+    "less": "^2.7.1",
+    "react-scripts": "1.1.1"
   },
   "scripts": {
     "build-css": "lessc src/style/index.less src/index.css",
-    "watch-css": "npm run build-css && grunt"
+    "watch-css": "npm run build-css && grunt",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
