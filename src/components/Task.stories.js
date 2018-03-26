@@ -4,8 +4,8 @@ import { action } from '@storybook/addon-actions';
 
 import Task from './Task';
 
-function buildStory(attrs) {
-  const task = {
+export function createTask(attrs) {
+  return {
     id: Math.round(Math.random() * 1000000).toString(),
     title: 'Test Task',
     subtitle: 'on Test Board',
@@ -14,11 +14,13 @@ function buildStory(attrs) {
     updatedAt: Date.now(),
     ...attrs,
   };
-  const onPinTask = action('onPinTask');
-  const onSnoozeTask = action('onSnoozeTask');
-
-  return <Task {...{ task, onPinTask, onSnoozeTask }} />;
 }
+
+export const actions = {
+  onPinTask: action('onPinTask'),
+  onArchiveTask: action('onArchiveTask'),
+  onUpdateTaskTitle: action('onUpdateTaskTitle'),
+};
 
 storiesOf('Task', module)
   .addDecorator(story => (
@@ -26,7 +28,7 @@ storiesOf('Task', module)
       {story()}
     </div>
   ))
-  .add('inbox task', () => buildStory({ state: 'TASK_INBOX' }))
-  .add('snoozed task', () => buildStory({ state: 'TASK_SNOOZED' }))
-  .add('pinned task', () => buildStory({ state: 'TASK_PINNED' }))
-  .add('archived task', () => buildStory({ state: 'TASK_ARCHIVED' }));
+  .add('inbox task', () => <Task task={createTask({ state: 'TASK_INBOX' })} {...actions} />)
+  .add('snoozed task', () => <Task task={createTask({ state: 'TASK_SNOOZED' })} {...actions} />)
+  .add('pinned task', () => <Task task={createTask({ state: 'TASK_PINNED' })} {...actions} />)
+  .add('archived task', () => <Task task={createTask({ state: 'TASK_ARCHIVED' })} {...actions} />);
