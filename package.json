@@ -15,6 +15,7 @@
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
+    "@storybook/addon-storyshots": "^6.0.21",
     "@storybook/node-logger": "^6.0.21",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.21",
@@ -23,7 +24,8 @@
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
     "less": "^2.7.1",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
