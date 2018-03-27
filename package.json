@@ -2,7 +2,13 @@
   "name": "learnstorybook",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-redux": "^5.0.7",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@storybook/addon-actions": "^5.0.0-rc.10",
@@ -15,9 +21,6 @@
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
     "less": "^2.7.1",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5",
     "react-test-renderer": "^16.8.3",
     "require-context.macro": "^1.0.4"
   },
