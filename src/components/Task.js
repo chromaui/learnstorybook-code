@@ -9,6 +9,7 @@ const alignStyles = {
 
 export default function Task({
   task: { id, title, url, state, subtitle },
+  onArchiveTask,
   onSnoozeTask,
   onPinTask,
 }) {
@@ -21,14 +22,14 @@ export default function Task({
           disabled={true}
           name="checked"
         />
-        <span className="checkbox-custom" />
+        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
       </label>
       <input
         type="text"
         value={title}
         readOnly={true}
         placeholder="Input title"
-        onClick={() => open(url, '_new')}
+        onClick={() => window.open(url, '_new')}
       />
       {subtitle && <p style={{ flex: 1, color: '#666', ...alignStyles }}>{subtitle}</p>}
       {state !== 'TASK_SNOOZED' &&
@@ -50,8 +51,8 @@ Task.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    url: PropTypes.string,
     state: PropTypes.string.isRequired,
   }),
   onSnoozeTask: PropTypes.func,
