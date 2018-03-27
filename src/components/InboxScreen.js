@@ -7,7 +7,11 @@ import { archiveTask, pinTask, snoozeTask } from '../lib/redux';
 function InboxScreen({ tasks, onSnoozeTask, onArchiveTask, onPinTask }) {
   const events = { onSnoozeTask, onPinTask, onArchiveTask };
 
-  return <TaskList tasks={tasks} {...events} />;
+  return (
+    <div style={{ background: 'white' }}>
+      <TaskList tasks={tasks} {...events} />
+    </div>
+  );
 }
 
 export default connect(

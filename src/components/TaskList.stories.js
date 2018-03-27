@@ -4,14 +4,14 @@ import { storiesOf } from '@storybook/react';
 import TaskList from './TaskList';
 import { createTask, actions } from './Task.stories';
 
-const defaultTasks = [
+export const defaultTasks = [
   createTask({ state: 'TASK_INBOX' }),
   createTask({ state: 'TASK_INBOX' }),
   createTask({ state: 'TASK_INBOX' }),
   createTask({ state: 'TASK_INBOX' }),
 ];
 
-const withPinnedTasks = [
+export const withPinnedTasks = [
   createTask({ state: 'TASK_PINNED' }),
   createTask({ state: 'TASK_PINNED' }),
   createTask({ state: 'TASK_INBOX' }),
