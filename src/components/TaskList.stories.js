@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import TaskList from './TaskList';
-import * as TaskStories from './Task.stories';
+import { PureTaskList } from './TaskList';
+import * as TaskStories from './Task.stories'
 
 export default {
-  component: TaskList,
+  component:PureTaskList,
   title: 'TaskList',
-  decorators: [(story) => <div style={{ padding: '3rem' }}>{story()}</div>],
-
+  decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
 };
-const Template = (args) => <TaskList {...args} />;
+const Template = (args) => <PureTaskList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -31,7 +30,7 @@ WithPinnedTasks.args = {
   // Inherited data coming from the Default story.
   tasks:[
     ...Default.args.tasks.slice(0,5),
-    { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
+    { id: "6", title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
   ]
 };
 
