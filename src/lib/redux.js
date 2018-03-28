@@ -24,7 +24,6 @@ function taskStateReducer(taskState) {
 }
 
 export const reducer = (state, action) => {
-  console.log(state, action);
   switch (action.type) {
     case actions.ARCHIVE_TASK:
       return taskStateReducer('TASK_ARCHIVED')(state, action);

@@ -10,9 +10,14 @@ function TaskList({ tasks, onSnoozeTask, onPinTask, onArchiveTask }) {
     onArchiveTask,
   };
 
+  const tasksInOrder = [
+    ...tasks.filter(t => t.state === 'TASK_PINNED'),
+    ...tasks.filter(t => t.state !== 'TASK_PINNED'),
+  ];
+
   return (
     <div className="list-items">
-      {tasks.map(task => <Task key={task.id} task={task} {...events} />)}
+      {tasksInOrder.map(task => <Task key={task.id} task={task} {...events} />)}
     </div>
   );
 }

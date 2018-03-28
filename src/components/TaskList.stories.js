@@ -13,9 +13,9 @@ export const defaultTasks = [
 
 export const withPinnedTasks = [
   createTask({ state: 'TASK_PINNED' }),
-  createTask({ state: 'TASK_PINNED' }),
   createTask({ state: 'TASK_INBOX' }),
   createTask({ state: 'TASK_INBOX' }),
+  createTask({ title: 'Last task (pinned)', state: 'TASK_PINNED' }),
 ];
 
 storiesOf('TaskList', module)
