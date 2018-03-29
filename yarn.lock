@@ -13,16 +13,6 @@
     react-inspector "^2.2.2"
     uuid "^3.1.0"
 
-"@storybook/addon-jest@^3.3.15":
-  version "3.3.15"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-jest/-/addon-jest-3.3.15.tgz#304b10a91db7ffe0f39a4c8d79bbc43b24fe37a2"
-  dependencies:
-    "@storybook/components" "^3.3.15"
-    glamor "^2.20.40"
-    glamorous "^4.11.2"
-    global "^4.3.2"
-    prop-types "^15.6.0"
-
 "@storybook/addon-links@^3.3.15":
   version "3.3.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.3.15.tgz#b0ad4151de729aaa134ece86947e9df951583afe"
