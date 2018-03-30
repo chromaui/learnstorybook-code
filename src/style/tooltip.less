@@ -1,0 +1,31 @@
+@import './utils.less';
+
+.tooltip-heading {
+  .title-caps;
+  font-size: 11px;
+  .type-bold;
+  text-indent: 0;
+  color: @color-full;
+  margin-bottom: .25rem;
+}
+
+@tooltip-color: fade(@color-empty, 90%);
+
+.rc-tooltip {
+  opacity: 1 !important;
+}
+
+.rc-tooltip-arrow {
+  border-bottom-color: @tooltip-color !important;
+}
+.rc-tooltip-inner {
+  background-color: @tooltip-color !important;
+  color: @color-full !important;
+}
+
+.rc-tooltip-inner {
+  .list.small {
+    margin: 0 -10px;
+    min-width: 180px;
+  }
+}

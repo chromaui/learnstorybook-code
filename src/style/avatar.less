@@ -1,0 +1,76 @@
+@import './utils.less';
+
+@breakpoint: 600px;
+
+.avatar {
+	@avatar-l: 20px;
+	@avatar-s: 16px;
+
+	transform: translate3d(0,0,0);
+	display: inline-block;
+	height: @avatar-s;
+	overflow: hidden;
+	position: relative;
+	vertical-align: top;
+	width: @avatar-s;
+
+	background-color: transparent;
+	border-radius: @avatar-l;
+
+	.icon-user-alt {
+		font-size: @avatar-s;
+		line-height: @avatar-s + 6px;
+	}
+
+	@media screen and (min-width: @breakpoint) {
+		height: @avatar-l;
+		width: @avatar-l;
+
+		.icon-user-alt {
+			font-size: @avatar-l;
+			line-height: @avatar-l + 6px;
+		}
+	}
+
+	&.small { //small avatars adopt mobile-sizing
+		height: @avatar-s;
+		width: @avatar-s;
+
+		.icon-user-alt {
+			font-size: @avatar-s;
+			line-height: @avatar-s + 6px;
+		}
+
+		.initials {
+			@media screen and (min-width: @breakpoint) { //force reset of image styles 49:0
+				//.type-normal;
+				.font-s2;
+				line-height: @avatar-s; //offset for all caps styling
+			}
+		}
+	}
+
+	.image {
+		display: block;
+		height: 100%;
+		width: auto;
+	}
+
+	.initials {
+		.position(absolute, 0,0,0,0);
+
+		.font-s1;
+		color: @color-empty;
+		background: @color-primary;
+		border-radius: 7px;
+		line-height: @avatar-s;
+		text-align: center;
+		text-transform: uppercase;
+
+		@media screen and (min-width: @breakpoint) {
+			.font-s1;
+			//.type-light;
+			line-height: @avatar-l;
+		}
+	}
+}

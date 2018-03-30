@@ -15,14 +15,20 @@
     "@storybook/react": "^3.3.15",
     "babel-core": "^6.26.0",
     "react-scripts": "1.1.1",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "less": "^2.7.1"
   },
   "scripts": {
+    "build-css": "lessc src/style/index.less src/index.css",
+    "watch-css": "npm run build-css && grunt",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "start-storybook watch-css -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   }
 }
