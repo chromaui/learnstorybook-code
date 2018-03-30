@@ -1,4 +1,4 @@
-@import './utils.less';
+@import "./utils.less";
 
 // Empty states and 404 messages
 .wrapper-message {
@@ -6,17 +6,16 @@
   transform: translate3d(0, -50%, 0);
   text-align: center;
 
+  .icon-check {
+    .font-l2;
+    color: @color-primary;
+    display: block;
+  }
+
   .title-message {
     .font-s3;
     .type-bold;
-    color: @color-ancillary;
-  }
-
-  .icon-sync {
-    opacity: 1;
-    animation: spin 2s infinite linear;
-    display: inline-block;
-    margin-right: 4px;
+    color: @color-well;
   }
 
   .subtitle-message {

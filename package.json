@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook watch-css -p 9009 -s public",
+    "storybook": "start-storybook -p watch-css -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   }
 }

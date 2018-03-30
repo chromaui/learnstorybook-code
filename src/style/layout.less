@@ -1,14 +1,11 @@
-@import './utils.less';
+@import "./utils.less";
 
 @menu-width: 270px;
 @column: 5.55555%;
 
 body {
   .position(absolute, 0, 0, 0, 0);
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #26c6da;
 }
 
 #container {
@@ -31,7 +28,6 @@ body {
 #menu {
   .position(absolute, 0, 0, 0, 0, @menu-width);
 }
-
 
 #content-container {
   .position(absolute, 0, 0, 0, 0);
@@ -61,12 +57,16 @@ body {
   // Toggle menu on mobile
   .menu-open & {
     transform: translate3d(@menu-width, 0, 0);
-    opacity: .85;
+    opacity: 0.85;
     left: 0;
 
     @media screen and (min-width: 40em) {
       // Show menu on desktop, negate .menu-open
-      transform: translate3d(0, 0, 0); //reset transform and use position properties instead
+      transform: translate3d(
+        0,
+        0,
+        0
+      ); //reset transform and use position properties instead
       opacity: 1;
       left: @menu-width;
     }
@@ -84,5 +84,7 @@ body {
   }
 
   // Hide overlay on desktop
-  @media screen and (min-width: 40em) { display: none; }
+  @media screen and (min-width: 40em) {
+    display: none;
+  }
 }

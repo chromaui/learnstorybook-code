@@ -1,4 +1,4 @@
-@import './utils.less';
+@import "./utils.less";
 
 .list-heading {
   .title-caps;
@@ -17,7 +17,7 @@
   }
 }
 
-.list-items .list-item {
+.list-item {
   .font-s2;
 
   // Layout of list-item children
@@ -28,113 +28,37 @@
   background: @color-empty;
   transition: all ease-out 150ms;
 
-  .avatar-wrapper {
-    flex: 0 0 44px;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .avatar {
-    position: absolute;
-    top: 14px;
-    left: 12px;
-    border-radius: 0;
-  }
-
   .title {
     .ellipsized;
     flex: 1;
   }
-
-  a.text, .subtitle a {
-    &:hover { text-decoration: underline; }
-  }
-
-  .text {
-    color: @color-full;
-    line-height: 48px;
-
-    &:hover {
-      text-decoration: underline;
-
-      .icon-arrow-right-alt { color: @color-full; }
-    }
-
-    .icon-arrow-right-alt {
-      font-size: 12px;
-      color: @color-medium-rare;
-    }
-
-  }
-
-  .subtitle {
-    .ellipsized;
-    flex: 0 0 25%;
-
-    // Sizing
-    .font-s2;
-    .type-normal;
-    padding: .75rem 0; //total height ~48
-    line-height: 1.5rem !important;
-
-    a {
-      color: @color-medium-rare;
-    }
-  }
-
-  .time-snooze {
-    .font-s2;
-    .type-normal;
-    .type-italic;
-    padding: .75rem 0; //total height ~48
-    line-height: 1.5rem !important;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-
-
 
   // Style of list-item children
   input[type="text"] {
     background: transparent;
     width: 100%;
 
-    &:focus { cursor: text; }
+    &:focus {
+      cursor: text;
+    }
   }
 
   .actions {
     transition: all 200ms ease-in;
-    padding-right: .5rem;
+    padding-right: 20px;
 
-    a, .Select {
+    a {
       display: inline-block;
       vertical-align: top;
       text-align: center;
 
-      color: @color-medium-rare;
-      &:hover { color: @color-primary; }
-      &:active { color: @color-well; }
-    }
-
-    a:not(.reclaim) {
-      transition: all 200ms ease-in;
-      overflow: hidden;
-      width: 2rem;
-    }
-
-    .reclaim {
-      .type-bold;
-      .font-s1;
-      display: inline-block;
-      border-radius: 3em;
-      background: @color-secondary;
-      padding: .25rem .75rem;
-      color: @color-empty;
-      margin-top: .75rem;
-      margin-right: .5rem;
-
-      &:hover { color: @color-empty; }
+      color: @color-rare;
+      &:hover {
+        color: @color-primary;
+      }
+      &:active {
+        color: @color-well;
+      }
     }
 
     [class^="icon-"] {
@@ -145,82 +69,27 @@
     }
   }
 
-  .hidden() {
-    opacity: 0;
-    //max-width: 0;
-  }
-
-  .visible {
-    opacity: 1 !important;
-    //max-width: 300px !important;
-  }
-
   //PINNED TASKS
-  &.TASK_PINNED .actions > *.star {
-    .visible;
+  &.TASK_PINNED .icon-star {
     color: @color-primary;
-
   }
 
-  &.TASK_PINNED .actions > *:not(.star) {
-    .hidden;
+  &.TASK_ARCHIVED input[type="text"] {
+    color: @color-medium;
   }
-
-  &.TASK_PINNED:hover {
-    .actions > * { .visible; }
-  }
-
-  //SNOOZED
-  &.TASK_SNOOZED {
-    .time { .visible; }
-    .icon-time { color: @color-primary; }
-  }
-
-  &.TASK_SNOOZED .actions > *:not(.time) {
-    .hidden;
-  }
-
-  &.TASK_SNOOZED:hover {
-    .actions > * { .visible; }
-
-  }
-
-  // NOT PINNED TASKS
-  .actions  > * { opacity: 0; }
-  &:hover,
-  &.snoozed-button-active {
-    .actions > * {
-      .visible;
-    }
-  }
-
-  &.snoozed-button-active {
-    .actions .icon-time {
-      color: @color-primary;
-    }
-  }
-
-  // CHECKBOX AVATAR SWITCH OFF
-  .checkbox  { opacity: 0; }
-  .avatar { opacity: 1; }
 
   &:hover {
     background-image: linear-gradient(to bottom, #e5f9f7 0%, #f0fffd 100%);
 
     .checkbox {
-      opacity: 1;
       cursor: pointer;
-    }
-
-    .avatar {
-      opacity: 0;
-      pointer-events: none;
     }
   }
 
-
   // Border between list items
-  & + .list-item { border-top: 1px solid #f0f9fb; }
+  & + .list-item {
+    border-top: 1px solid #f0f9fb;
+  }
 
   // Checked
   &.checked {
@@ -229,15 +98,45 @@
       text-decoration: line-through;
     }
 
-    .delete-item { display: inline-block; }
+    .delete-item {
+      display: inline-block;
+    }
+  }
+}
+
+.loading-item {
+  height: 3rem;
+  width: 100%;
+  background: @color-empty;
+  display: flex;
+  align-items: center;
+  line-height: 1rem;
+  padding-left: 16px;
+
+  .glow-checkbox,
+  .glow-text span {
+    animation: glow 1.5s ease-in-out infinite;
+    background: @color-rare;
+    color: transparent;
+    cursor: progress;
+    display: inline-block;
   }
 
-  // Editing
-  .delete-item { display: none; }
-  &.editing .delete-item { display: inline-block; }
+  .glow-checkbox {
+    margin-right: 16px;
+    width: 12px;
+    height: 12px;
+  }
+
+  & + .loading-item {
+    border-top: 1px solid #f0f9fb;
+  }
 }
 
 .list-items {
+  position: relative;
+  background: @color-empty;
+  min-height: 300px;
   .select-placeholder {
     border: none;
     width: 48px;

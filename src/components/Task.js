@@ -1,19 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const alignStyles = {
-  fontSize: "14px",
-  lineHeight: "1.5rem",
-  padding: "0.75em 0.25em"
-};
-
 export default function Task({
   task: { id, title, state },
   onArchiveTask,
   onPinTask
 }) {
   return (
-    <div className="list-item">
+    <div className={`list-item ${state}`}>
       <label className="checkbox">
         <input
           type="checkbox"
@@ -23,17 +17,22 @@ export default function Task({
         />
         <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
       </label>
-      <input
-        type="text"
-        value={title}
-        readOnly={true}
-        placeholder="Input title"
-      />
-      {state !== "TASK_PINNED" && (
-        <a style={alignStyles} onClick={() => onPinTask(id)}>
-          <span className="icon-link icon-arrow-down" />
-        </a>
-      )}
+      <div className="title">
+        <input
+          type="text"
+          value={title}
+          readOnly={true}
+          placeholder="Input title"
+        />
+      </div>
+
+      <div className="actions" onClick={event => event.stopPropagation()}>
+        {state !== "TASK_ARCHIVED" && (
+          <a onClick={() => onPinTask(id)}>
+            <span className={`icon-star`} />
+          </a>
+        )}
+      </div>
     </div>
   );
 }
