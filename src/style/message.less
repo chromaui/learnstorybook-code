@@ -1,0 +1,26 @@
+@import "./utils.less";
+
+// Empty states and 404 messages
+.wrapper-message {
+  .position(absolute, 45%, 0, auto, 0);
+  transform: translate3d(0, -50%, 0);
+  text-align: center;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    .font-l2;
+    color: @color-primary;
+    display: block;
+  }
+
+  .title-message {
+    .font-s3;
+    .type-bold;
+    color: @color-well;
+  }
+
+  .subtitle-message {
+    .font-s2;
+    color: @color-medium-well;
+  }
+}
