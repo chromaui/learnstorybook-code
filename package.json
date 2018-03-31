@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.2.0",
+    "react-chromatic": "^0.8.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7"
   },
@@ -14,12 +15,12 @@
     "@storybook/addons": "^3.3.15",
     "@storybook/react": "^3.3.15",
     "babel-core": "^6.26.0",
-    "react-scripts": "1.1.1",
-    "react-test-renderer": "^16.2.0",
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
-    "less": "^2.7.1"
+    "less": "^2.7.1",
+    "react-scripts": "1.1.1",
+    "react-test-renderer": "^16.2.0"
   },
   "scripts": {
     "build-css": "lessc src/style/index.less src/index.css",
