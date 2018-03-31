@@ -22,7 +22,8 @@
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
     "less": "^2.7.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "chromatic": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
