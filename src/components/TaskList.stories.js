@@ -8,6 +8,8 @@ export const defaultTasks = [
   createTask({ state: "TASK_INBOX" }),
   createTask({ state: "TASK_INBOX" }),
   createTask({ state: "TASK_INBOX" }),
+  createTask({ state: "TASK_INBOX" }),
+  createTask({ state: "TASK_INBOX" }),
   createTask({ state: "TASK_INBOX" })
 ];
 
@@ -15,7 +17,9 @@ export const withPinnedTasks = [
   createTask({ title: "Task 1", state: "TASK_INBOX" }),
   createTask({ title: "Task 2", state: "TASK_INBOX" }),
   createTask({ title: "Task 3", state: "TASK_INBOX" }),
-  createTask({ title: "Task 4 (pinned)", state: "TASK_PINNED" })
+  createTask({ title: "Task 4", state: "TASK_INBOX" }),
+  createTask({ title: "Task 5", state: "TASK_INBOX" }),
+  createTask({ title: "Task 6 (pinned)", state: "TASK_PINNED" })
 ];
 
 storiesOf("TaskList", module)
@@ -24,5 +28,5 @@ storiesOf("TaskList", module)
   .add("withPinnedTasks", () => (
     <PureTaskList tasks={withPinnedTasks} {...actions} />
   ))
-  .add("loading", () => <PureTaskList loading {...actions} />)
+  .add("loading", () => <PureTaskList loading tasks={[]} {...actions} />)
   .add("empty", () => <PureTaskList tasks={[]} {...actions} />);

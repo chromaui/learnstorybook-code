@@ -21,11 +21,6 @@ export const actions = {
 };
 
 storiesOf("Task", module)
-  .addDecorator(story => (
-    <div className="list-items" style={{ background: "white" }}>
-      {story()}
-    </div>
-  ))
   .add("default", () => (
     <Task task={createTask({ state: "TASK_INBOX" })} {...actions} />
   ))
