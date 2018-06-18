@@ -1,11 +1,3 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "modules": false
-      }
-    ],
-    "vue"
-  ]
+  "presets": ["@vue/app"]
 }
