@@ -2,12 +2,12 @@ import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 
 import { TaskComponent } from './task.component';
+import { CommonModule } from '@angular/common';
 
 export const task = {
   id: '1',
   title: 'Test Task',
   state: 'TASK_INBOX',
-  updatedAt: new Date(2018, 0, 1, 9, 0),
 };
 
 export const actions = {
@@ -19,6 +19,7 @@ storiesOf('Task', module)
   .addDecorator(
     moduleMetadata({
       declarations: [TaskComponent],
+      imports: [CommonModule],
     }),
   )
   .add('default', () => {
