@@ -1,4 +1,8 @@
-import { configure } from '@storybook/angular';
+import {
+  configure
+} from '@storybook/angular';
+
+import '../src/styles.less';
 
 // automatically import all files ending in *.stories.ts
 const req = require.context('../src/stories', true, /.stories.ts$/);
