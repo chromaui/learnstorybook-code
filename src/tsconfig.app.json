@@ -8,6 +8,7 @@
   "exclude": [
     "src/test.ts",
     "**/*.stories.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.test.ts"
   ]
 }

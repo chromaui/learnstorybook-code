@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Task archived 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <task-item
+      ng-reflect-task="[object Object]"
+    >
+      <div
+        class="list-item TASK_ARCHIVED"
+      >
+        <label
+          class="checkbox"
+        >
+          <input
+            checked=""
+            disabled="true"
+            name="checked"
+            type="checkbox"
+          />
+          <span
+            class="checkbox-custom"
+          />
+        </label>
+        <div
+          class="title"
+        >
+          <input
+            placeholder="Input title"
+            readonly="true"
+            type="text"
+          />
+        </div>
+        <div
+          class="actions"
+        >
+          
+        </div>
+      </div>
+    </task-item>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots Task default 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <task-item
+      ng-reflect-task="[object Object]"
+    >
+      <div
+        class="list-item TASK_INBOX"
+      >
+        <label
+          class="checkbox"
+        >
+          <input
+            disabled="true"
+            name="checked"
+            type="checkbox"
+          />
+          <span
+            class="checkbox-custom"
+          />
+        </label>
+        <div
+          class="title"
+        >
+          <input
+            placeholder="Input title"
+            readonly="true"
+            type="text"
+          />
+        </div>
+        <div
+          class="actions"
+        >
+          
+          <a>
+            <span
+              class="icon-star"
+            />
+          </a>
+        </div>
+      </div>
+    </task-item>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots Task pinned 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <task-item
+      ng-reflect-task="[object Object]"
+    >
+      <div
+        class="list-item TASK_PINNED"
+      >
+        <label
+          class="checkbox"
+        >
+          <input
+            disabled="true"
+            name="checked"
+            type="checkbox"
+          />
+          <span
+            class="checkbox-custom"
+          />
+        </label>
+        <div
+          class="title"
+        >
+          <input
+            placeholder="Input title"
+            readonly="true"
+            type="text"
+          />
+        </div>
+        <div
+          class="actions"
+        >
+          
+          <a>
+            <span
+              class="icon-star"
+            />
+          </a>
+        </div>
+      </div>
+    </task-item>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
