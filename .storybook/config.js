@@ -1,7 +1,7 @@
 import {
   configure
 } from '@storybook/angular';
-
+import 'storybook-chromatic/storybook-addon';
 import '../src/styles.less';
 
 // automatically import all files ending in *.stories.ts
