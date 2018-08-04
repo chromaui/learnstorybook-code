@@ -1,22 +1,22 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { TaskListComponent } from './task-list.component';
+import { PureTaskListComponent } from './pure-task-list.component';
 import { TaskComponent } from './task.component';
 
-import { withPinnedTasks } from './task-list.stories';
+import { withPinnedTasks } from './pure-task-list.stories';
 import { By } from '@angular/platform-browser';
 
 describe('TaskList component', () => {
-  let component: TaskListComponent;
-  let fixture: ComponentFixture<TaskListComponent>;
+  let component: PureTaskListComponent;
+  let fixture: ComponentFixture<PureTaskListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskComponent, TaskListComponent],
+      declarations: [TaskComponent, PureTaskListComponent],
     }).compileComponents();
   }));
 
   it('renders pinned tasks at the start of the list', () => {
-    fixture = TestBed.createComponent(TaskListComponent);
+    fixture = TestBed.createComponent(PureTaskListComponent);
     component = fixture.componentInstance;
     component.tasks = withPinnedTasks;
 

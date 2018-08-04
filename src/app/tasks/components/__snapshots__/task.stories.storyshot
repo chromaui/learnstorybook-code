@@ -12,6 +12,7 @@ exports[`Storyshots Task archived 1`] = `
     >
       <div
         class="list-item TASK_ARCHIVED"
+        id="1"
       >
         <label
           class="checkbox"
@@ -58,6 +59,7 @@ exports[`Storyshots Task default 1`] = `
     >
       <div
         class="list-item TASK_INBOX"
+        id="1"
       >
         <label
           class="checkbox"
@@ -108,6 +110,7 @@ exports[`Storyshots Task pinned 1`] = `
     >
       <div
         class="list-item TASK_PINNED"
+        id="1"
       >
         <label
           class="checkbox"

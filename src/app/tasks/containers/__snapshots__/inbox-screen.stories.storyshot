@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots InboxScreen default 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <inbox-screen>
+      
+      
+      <div
+        class="page lists-show"
+      >
+        <nav>
+          <h1
+            class="title-page"
+          >
+            <span
+              class="title-wrapper"
+            >
+              Taskbox
+            </span>
+          </h1>
+        </nav>
+        <task-list>
+          <pure-task-list
+            ng-reflect-tasks="[object Object],[object Object"
+          >
+            <div
+              class="list-items"
+            >
+              
+              <task-item
+                ng-reflect-task="[object Object]"
+              >
+                <div
+                  class="list-item TASK_INBOX"
+                >
+                  <label
+                    class="checkbox"
+                  >
+                    <input
+                      disabled="true"
+                      name="checked"
+                      type="checkbox"
+                    />
+                    <span
+                      class="checkbox-custom"
+                    />
+                  </label>
+                  <div
+                    class="title"
+                  >
+                    <input
+                      placeholder="Input title"
+                      readonly="true"
+                      type="text"
+                    />
+                  </div>
+                  <div
+                    class="actions"
+                  >
+                    
+                    <a>
+                      <span
+                        class="icon-star"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </task-item>
+              <task-item
+                ng-reflect-task="[object Object]"
+              >
+                <div
+                  class="list-item TASK_INBOX"
+                >
+                  <label
+                    class="checkbox"
+                  >
+                    <input
+                      disabled="true"
+                      name="checked"
+                      type="checkbox"
+                    />
+                    <span
+                      class="checkbox-custom"
+                    />
+                  </label>
+                  <div
+                    class="title"
+                  >
+                    <input
+                      placeholder="Input title"
+                      readonly="true"
+                      type="text"
+                    />
+                  </div>
+                  <div
+                    class="actions"
+                  >
+                    
+                    <a>
+                      <span
+                        class="icon-star"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </task-item>
+              <task-item
+                ng-reflect-task="[object Object]"
+              >
+                <div
+                  class="list-item TASK_INBOX"
+                >
+                  <label
+                    class="checkbox"
+                  >
+                    <input
+                      disabled="true"
+                      name="checked"
+                      type="checkbox"
+                    />
+                    <span
+                      class="checkbox-custom"
+                    />
+                  </label>
+                  <div
+                    class="title"
+                  >
+                    <input
+                      placeholder="Input title"
+                      readonly="true"
+                      type="text"
+                    />
+                  </div>
+                  <div
+                    class="actions"
+                  >
+                    
+                    <a>
+                      <span
+                        class="icon-star"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </task-item>
+              <task-item
+                ng-reflect-task="[object Object]"
+              >
+                <div
+                  class="list-item TASK_INBOX"
+                >
+                  <label
+                    class="checkbox"
+                  >
+                    <input
+                      disabled="true"
+                      name="checked"
+                      type="checkbox"
+                    />
+                    <span
+                      class="checkbox-custom"
+                    />
+                  </label>
+                  <div
+                    class="title"
+                  >
+                    <input
+                      placeholder="Input title"
+                      readonly="true"
+                      type="text"
+                    />
+                  </div>
+                  <div
+                    class="actions"
+                  >
+                    
+                    <a>
+                      <span
+                        class="icon-star"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </task-item>
+              
+              
+            </div>
+          </pure-task-list>
+        </task-list>
+      </div>
+    </inbox-screen>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots InboxScreen error 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <inbox-screen>
+      
+      <div
+        class="page lists-show"
+      >
+        <div
+          class="wrapper-message"
+        >
+          <span
+            class="icon-face-sad"
+          />
+          <div
+            class="title-message"
+          >
+            Oh no!
+          </div>
+          <div
+            class="subtitle-message"
+          >
+            Something went wrong
+          </div>
+        </div>
+      </div>
+      
+    </inbox-screen>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;

@@ -2,7 +2,7 @@ import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
 import { TaskComponent } from './task.component';
-import { TaskListComponent } from './task-list.component';
+import { PureTaskListComponent } from './pure-task-list.component';
 import { task, actions } from './task.stories';
 
 export const defaultTasks = [
@@ -28,7 +28,7 @@ const props = {
 storiesOf('TaskList', module)
   .addDecorator(
     moduleMetadata({
-      declarations: [TaskListComponent, TaskComponent],
+      declarations: [PureTaskListComponent, TaskComponent],
       imports: [CommonModule],
     }),
   )
@@ -36,7 +36,7 @@ storiesOf('TaskList', module)
     return {
       template: `
         <div style="padding: 3rem">
-          <task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></task-list>
+          <pure-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></pure-task-list>
         </div>
       `,
       props,
@@ -46,7 +46,7 @@ storiesOf('TaskList', module)
     return {
       template: `
         <div style="padding: 3rem">
-          <task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></task-list>
+          <pure-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></pure-task-list>
         </div>
       `,
       props: {
@@ -59,7 +59,7 @@ storiesOf('TaskList', module)
     return {
       template: `
         <div style="padding: 3rem">
-          <task-list [tasks]="[]" loading="true" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></task-list>
+          <pure-task-list [tasks]="[]" loading="true" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></pure-task-list>
         </div>
       `,
       props,
@@ -69,7 +69,7 @@ storiesOf('TaskList', module)
     return {
       template: `
         <div style="padding: 3rem">
-          <task-list [tasks]="[]" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></task-list>
+          <pure-task-list [tasks]="[]" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></pure-task-list>
         </div>
       `,
       props,

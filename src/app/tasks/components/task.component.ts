@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Task } from './task.model';
+import { Task } from '../task.model';
 
 @Component({
   selector: 'task-item',
   template: `
-    <div class="list-item {{ task?.state }}">
+    <div class="list-item {{ task?.state }}" id="{{ task?.id }}">
       <label class="checkbox">
         <input
           type="checkbox"

@@ -18,7 +18,6 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-
   "jest": {
     "coveragePathIgnorePatterns": [
       "/jest-config/",
@@ -40,7 +39,8 @@
     },
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
-    }
+    },
+    "testURL": "http://localhost/"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +53,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ngxs/store": "^3.2.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

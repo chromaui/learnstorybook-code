@@ -1,0 +1,727 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots TaskList default 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <div
+      style="padding: 3rem"
+    >
+      <pure-task-list
+        ng-reflect-tasks="[object Object],[object Object"
+      >
+        <div
+          class="list-items"
+        >
+          
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="1"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="2"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="3"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="4"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="5"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="6"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          
+          
+        </div>
+      </pure-task-list>
+    </div>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots TaskList empty 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <div
+      style="padding: 3rem"
+    >
+      <pure-task-list
+        ng-reflect-tasks=""
+      >
+        <div
+          class="list-items"
+        >
+          
+          
+          <div
+            class="wrapper-message"
+          >
+            <span
+              class="icon-check"
+            />
+            <div
+              class="title-message"
+            >
+              You have no tasks
+            </div>
+            <div
+              class="subtitle-message"
+            >
+              Sit back and relax
+            </div>
+          </div>
+          
+        </div>
+      </pure-task-list>
+    </div>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots TaskList loading 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <div
+      style="padding: 3rem"
+    >
+      <pure-task-list
+        loading="true"
+        ng-reflect-loading="true"
+        ng-reflect-tasks=""
+      >
+        <div
+          class="list-items"
+        >
+          
+          
+          
+          <div>
+            
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+            <div
+              class="loading-item"
+            >
+              <span
+                class="glow-checkbox"
+              />
+              <span
+                class="glow-text"
+              >
+                <span>
+                  Loading
+                </span>
+                <span>
+                  cool
+                </span>
+                <span>
+                  state
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </pure-task-list>
+    </div>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
+
+exports[`Storyshots TaskList withPinnedTasks 1`] = `
+<storybook-dynamic-app-root
+  cfr={[Function CodegenComponentFactoryResolver]}
+  data={[Function Object]}
+  target={[Function ViewContainerRef_]}
+>
+  <ng-component>
+    <div
+      style="padding: 3rem"
+    >
+      <pure-task-list
+        ng-reflect-tasks="[object Object],[object Object"
+      >
+        <div
+          class="list-items"
+        >
+          
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_PINNED"
+              id="6"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="1"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="2"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="3"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="4"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          <task-item
+            ng-reflect-task="[object Object]"
+          >
+            <div
+              class="list-item TASK_INBOX"
+              id="5"
+            >
+              <label
+                class="checkbox"
+              >
+                <input
+                  disabled="true"
+                  name="checked"
+                  type="checkbox"
+                />
+                <span
+                  class="checkbox-custom"
+                />
+              </label>
+              <div
+                class="title"
+              >
+                <input
+                  placeholder="Input title"
+                  readonly="true"
+                  type="text"
+                />
+              </div>
+              <div
+                class="actions"
+              >
+                
+                <a>
+                  <span
+                    class="icon-star"
+                  />
+                </a>
+              </div>
+            </div>
+          </task-item>
+          
+          
+        </div>
+      </pure-task-list>
+    </div>
+  </ng-component>
+</storybook-dynamic-app-root>
+`;
