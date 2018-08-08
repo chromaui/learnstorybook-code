@@ -13,7 +13,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.7",

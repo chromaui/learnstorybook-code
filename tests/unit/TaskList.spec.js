@@ -1,9 +1,9 @@
 import Vue from "vue";
-import TaskList from "../../src/components/TaskList.vue";
-import { withPinnedTasks } from "../../src/components/TaskList.stories";
+import PureTaskList from "../../src/components/PureTaskList.vue";
+import { withPinnedTasks } from "../../src/components/PureTaskList.stories";
 
 it("renders pinned tasks at the start of the list", () => {
-  const Constructor = Vue.extend(TaskList);
+  const Constructor = Vue.extend(PureTaskList);
   const vm = new Constructor({
     propsData: { tasks: withPinnedTasks }
   }).$mount();
@@ -13,3 +13,4 @@ it("renders pinned tasks at the start of the list", () => {
 
   // We expect the pinned task to be rendered first, not at the end
   expect(lastTaskInput).not.toBe(null);
+});

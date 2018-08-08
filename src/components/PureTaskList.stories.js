@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/vue";
 import { task } from "./Task.stories";
 
-import TaskList from "./TaskList";
+import PureTaskList from "./PureTaskList";
 import { methods } from "./Task.stories";
 
 export const defaultTaskList = [
@@ -24,31 +24,31 @@ const paddedList = () => {
   };
 };
 
-storiesOf("TaskList", module)
+storiesOf("PureTaskList", module)
   .addDecorator(paddedList)
   .add("default", () => ({
-    components: { TaskList },
-    template: `<task-list :tasks="tasks" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
+    components: { PureTaskList },
+    template: `<pure-task-list :tasks="tasks" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
     data: () => ({
       tasks: defaultTaskList
     }),
     methods
   }))
   .add("withPinnedTasks", () => ({
-    components: { TaskList },
-    template: `<task-list :tasks="tasks" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
+    components: { PureTaskList },
+    template: `<pure-task-list :tasks="tasks" @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
     data: () => ({
       tasks: withPinnedTasks
     }),
     methods
   }))
   .add("loading", () => ({
-    components: { TaskList },
-    template: `<task-list loading @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
+    components: { PureTaskList },
+    template: `<pure-task-list loading @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
     methods
   }))
   .add("empty", () => ({
-    components: { TaskList },
-    template: `<task-list  @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
+    components: { PureTaskList },
+    template: `<pure-task-list  @archiveTask="onArchiveTask" @pinTask="onPinTask"/>`,
     methods
   }));
