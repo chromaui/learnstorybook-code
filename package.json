@@ -36,6 +36,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "jest-vue-preprocessor": "^1.4.0",
     "less": "^2.7.1",
+    "storybook-chromatic": "^1.0.1",
     "vue-template-compiler": "^2.5.16"
   }
 }
