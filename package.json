@@ -2,7 +2,14 @@
   "name": "learnstorybook",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-less": "^1.4.0",
@@ -10,7 +17,26 @@
     "less": "^2.7.1"
   },
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "build-css": "lessc src/style/index.less src/index.css",
     "watch-css": "npm run build-css && grunt"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
