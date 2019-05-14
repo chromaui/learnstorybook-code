@@ -811,6 +811,20 @@ a:active {
 a:focus {
   outline: none;
 }
+button.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+button.link-button:hover,
+button.link-button:active,
+button.link-button:focus {
+  text-decoration: none;
+}
 .list-heading {
   letter-spacing: .3em;
   text-indent: .3em;

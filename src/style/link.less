@@ -10,3 +10,19 @@ a {
   &:active { color: @color-well; }
   &:focus { outline:none; } //removes FF dotted outline
 }
+
+button.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+}
