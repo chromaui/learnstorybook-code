@@ -814,16 +814,11 @@ a:focus {
 button.link-button {
   background-color: transparent;
   border: none;
+  color: #eee;
   cursor: pointer;
-  text-decoration: none;
   display: inline;
   margin: 0;
   padding: 0;
-}
-button.link-button:hover,
-button.link-button:active,
-button.link-button:focus {
-  text-decoration: none;
 }
 .list-heading {
   letter-spacing: .3em;
