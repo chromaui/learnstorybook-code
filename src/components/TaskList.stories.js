@@ -1,8 +1,14 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
-import { PureTaskList } from './TaskList';
+import TaskList, { PureTaskList } from './TaskList';
 import { task, actions } from './Task.stories';
+
+export default {
+  Component: TaskList,
+  title: 'TaskList',
+  decorators: [story => <div style={{ padding: '3rem' }}>{story()}</div>],
+  excludeStories: /^[a-z].*/,
+};
 
 export const defaultTasks = [
   { ...task, id: '1', title: 'Task 1' },
@@ -18,9 +24,10 @@ export const withPinnedTasks = [
   { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
 ];
 
-storiesOf('TaskList', module)
-  .addDecorator(story => <div style={{ padding: '3rem' }}>{story()}</div>)
-  .add('default', () => <PureTaskList tasks={defaultTasks} {...actions} />)
-  .add('withPinnedTasks', () => <PureTaskList tasks={withPinnedTasks} {...actions} />)
-  .add('loading', () => <PureTaskList loading tasks={[]} {...actions} />)
-  .add('empty', () => <PureTaskList tasks={[]} {...actions} />);
+export const Default = () => <PureTaskList tasks={defaultTasks} {...actions} />;
+
+export const WithPinned = () => <PureTaskList tasks={withPinnedTasks} {...actions} />;
+
+export const Loading = () => <PureTaskList loading tasks={[]} {...actions} />;
+
+export const Empty = () => <PureTaskList tasks={[]} {...actions} />;
