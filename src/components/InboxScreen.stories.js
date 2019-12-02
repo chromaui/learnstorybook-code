@@ -2,11 +2,11 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { Provider } from 'react-redux';
 
-import InboxScreen, { PureInboxScreen } from './InboxScreen';
-import { defaultTasks } from './TaskList.stories';
+import { PureInboxScreen } from './InboxScreen';
+import { defaultTasksData } from './TaskList.stories';
 
 export default {
-  Component: InboxScreen,
+  component: PureInboxScreen,
   title: 'InboxScreen',
   decorators: [story => <Provider store={store}>{story()}</Provider>],
 };
@@ -15,7 +15,7 @@ export default {
 const store = {
   getState: () => {
     return {
-      tasks: defaultTasks,
+      tasks: defaultTasksData,
     };
   },
   subscribe: () => 0,
