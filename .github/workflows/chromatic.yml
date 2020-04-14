@@ -1,7 +1,8 @@
 name: "Chromatic"
 on:
   push
-
+env:
+  CHROMATIC_INDEX_URL: https://www.staging-chromatic.com
 jobs:
   test:
     runs-on: ubuntu-latest
