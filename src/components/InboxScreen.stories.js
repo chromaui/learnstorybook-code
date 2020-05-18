@@ -8,6 +8,7 @@ import { defaultTasksData } from './TaskList.stories';
 export default {
   component: PureInboxScreen,
   title: 'InboxScreen',
+  parameters: { assets: ['designs/app.png'] },
   decorators: [(story) => <Provider store={store}>{story()}</Provider>],
 };
 
