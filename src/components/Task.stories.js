@@ -8,7 +8,13 @@ export default {
   component: Task,
   title: 'Task',
   decorators: [withKnobs],
-
+  parameters: {
+    assets: [
+      'path/to/your/asset.png',
+      'path/to/another/asset.png',
+      'path/to/yet/another/asset.png',
+    ],
+  },
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
