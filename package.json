@@ -26,6 +26,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "less": "^2.7.1",
     "react-test-renderer": "^16.13.1",
+    "@storybook/addon-storyshots": "^6.0.18",
     "chromatic": "^4.0.2"
   },
   "scripts": {
