@@ -1,46 +1,34 @@
-import React from "react";
+import React from 'react';
 
-import Task from "./Task";
+import { PureTaskList } from './TaskList';
+import { taskData, actionsData } from './Task.stories';
 
 export default {
-  component: Task,
-  title: "Task",
+  component: PureTaskList,
+  title: 'TaskList',
+  decorators: [(story) => <div style={{ padding: '3rem' }}>{story()}</div>],
+  parameters: { assets: ['designs/list-1.png', 'designs/list-2.png'] },
+  excludeStories: /.*Data$/,
 };
 
-const Template = (args) => <Task {...args} />;
+export const defaultTasksData = [
+  { ...taskData, id: '1', title: 'Task 1' },
+  { ...taskData, id: '2', title: 'Task 2' },
+  { ...taskData, id: '3', title: 'Task 3' },
+  { ...taskData, id: '4', title: 'Task 4' },
+  { ...taskData, id: '5', title: 'Task 5' },
+  { ...taskData, id: '6', title: 'Task 6' },
+];
 
-export const Default = Template.bind({});
-Default.args = {
-  task: {
-    id: "1",
-    title: "Test Task",
-    state: "TASK_INBOX",
-    updatedAt: new Date(2018, 0, 1, 9, 0),
-  },
-};
+export const withPinnedTasksData = [
+  ...defaultTasksData.slice(0, 5),
+  { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
+];
 
-export const Pinned = Template.bind({});
-Pinned.args = {
-  task: {
-    ...Default.args.task,
-    state: "TASK_PINNED",
-  },
-};
+export const Default = () => <PureTaskList tasks={defaultTasksData} {...actionsData} />;
 
-export const Archived = Template.bind({});
-Archived.args = {
-  task: {
-    ...Default.args.task,
-    state: "TASK_ARCHIVED",
-  },
-};
+export const WithPinnedTasks = () => <PureTaskList tasks={withPinnedTasksData} {...actionsData} />;
 
-const longTitleString = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
+export const Loading = () => <PureTaskList loading tasks={[]} {...actionsData} />;
 
-export const LongTitle = Template.bind({});
-LongTitle.args = {
-  task: {
-    ...Default.args.task,
-    title: longTitleString,
-  }
-};
+export const Empty = () => <PureTaskList tasks={[]} {...actionsData} />;
