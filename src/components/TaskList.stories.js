@@ -28,6 +28,7 @@ WithPinnedTasks.args = {
     ...Default.args.tasks.slice(0,5),
     { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
   ]
+
 };
 
 export const Loading = Template.bind({});
