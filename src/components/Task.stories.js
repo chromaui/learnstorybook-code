@@ -7,13 +7,7 @@ export default {
   title: 'Task',
    // Parameters used in Story at component level.
   // Learn more about parameters in https://storybook.js.org/docs/react/writing-stories/parameters
-  parameters: {
-    assets: [
-      'path/to/your/asset.png',
-      'path/to/another/asset.png',
-      'path/to/yet/another/asset.png',
-    ],
-  },
+  parameters: { assets: ['designs/items.png'] }
 };
 
 const Template = (args) => <Task {...args} />;
