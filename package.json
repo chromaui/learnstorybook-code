@@ -1,0 +1,16 @@
+{
+  "name": "learnstorybook",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {},
+  "scripts": {
+    "build-css": "lessc src/style/index.less src/index.css",
+    "watch-css": "npm run build-css && grunt"
+  },
+  "devDependencies": {
+    "grunt": "^1.3.0",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "less": "^3.12.2"
+  }
+}
