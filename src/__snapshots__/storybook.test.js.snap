@@ -120,3 +120,692 @@ exports[`Storyshots Task Pinned 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots TaskList Default 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-items"
+  >
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 1"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 2"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 3"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 4"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 5"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 6"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList Empty 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-items"
+  >
+    <div
+      className="wrapper-message"
+    >
+      <span
+        className="icon-check"
+      />
+      <div
+        className="title-message"
+      >
+        You have no tasks
+      </div>
+      <div
+        className="subtitle-message"
+      >
+        Sit back and relax
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList Loading 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-items"
+  >
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      className="loading-item"
+    >
+      <span
+        className="glow-checkbox"
+      />
+      <span
+        className="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList With Pinned Tasks 1`] = `
+<div
+  style={
+    Object {
+      "padding": "3rem",
+    }
+  }
+>
+  <div
+    className="list-items"
+  >
+    <div
+      className="list-item TASK_PINNED"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 6 (pinned)"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 1"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 2"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 3"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 4"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="list-item TASK_INBOX"
+    >
+      <label
+        className="checkbox"
+      >
+        <input
+          defaultChecked={false}
+          disabled={true}
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          className="checkbox-custom"
+          onClick={[Function]}
+        />
+      </label>
+      <div
+        className="title"
+      >
+        <input
+          placeholder="Input title"
+          readOnly={true}
+          type="text"
+          value="Task 5"
+        />
+      </div>
+      <div
+        className="actions"
+        onClick={[Function]}
+      >
+        <a
+          onClick={[Function]}
+        >
+          <span
+            className="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
