@@ -1,5 +1,654 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots PureTaskList Default 1`] = `
+<div
+  style="padding: 3rem;"
+>
+  <div
+    class="list-items"
+  >
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PureTaskList Empty 1`] = `
+<div
+  style="padding: 3rem;"
+>
+  <div
+    class="list-items"
+  >
+    <div
+      class="list-items"
+    >
+      <div
+        class="wrapper-message"
+      >
+        <span
+          class="icon-check"
+        />
+         
+        <div
+          class="title-message"
+        >
+          You have no tasks
+        </div>
+         
+        <div
+          class="subtitle-message"
+        >
+          Sit back and relax
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PureTaskList Loading 1`] = `
+<div
+  style="padding: 3rem;"
+>
+  <div
+    class="list-items"
+  >
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+       
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots PureTaskList With Pinned Tasks 1`] = `
+<div
+  style="padding: 3rem;"
+>
+  <div
+    class="list-items"
+  >
+    <div
+      class="list-item TASK_PINNED"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="disabled"
+          name="checked"
+          type="checkbox"
+        />
+         
+        <span
+          class="checkbox-custom"
+        />
+      </label>
+       
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="readonly"
+          type="text"
+        />
+      </div>
+       
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Task Archived 1`] = `
 <div
   class="list-item TASK_ARCHIVED"
