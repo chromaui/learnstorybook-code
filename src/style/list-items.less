@@ -1,0 +1,144 @@
+@import "./utils.less";
+
+.list-heading {
+  .title-caps;
+  .type-bold;
+  font-size: 11px;
+  padding-left: 15px;
+  line-height: 40px;
+  background: @color-raw;
+  color: @color-medium;
+
+  .icon-sync {
+    opacity: 1;
+    animation: spin 2s infinite linear;
+    display: inline-block;
+    margin-right: 4px;
+  }
+}
+
+.list-item {
+  .font-s2;
+
+  // Layout of list-item children
+  display: flex;
+  flex-wrap: wrap;
+  height: 3rem;
+  width: 100%;
+  background: @color-empty;
+  transition: all ease-out 150ms;
+
+  .title {
+    .ellipsized;
+    flex: 1;
+  }
+
+  // Style of list-item children
+  input[type="text"] {
+    background: transparent;
+    width: 100%;
+
+    &:focus {
+      cursor: text;
+    }
+  }
+
+  .actions {
+    transition: all 200ms ease-in;
+    padding-right: 20px;
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+
+      color: @color-rare;
+      &:hover {
+        color: @color-primary;
+      }
+      &:active {
+        color: @color-well;
+      }
+    }
+
+    [class^="icon-"] {
+      .font-s3;
+
+      line-height: 3rem;
+      text-align: center;
+    }
+  }
+
+  //PINNED TASKS
+  &.TASK_PINNED .icon-star {
+    color: @color-primary;
+  }
+
+  &.TASK_ARCHIVED input[type="text"] {
+    color: @color-medium;
+  }
+
+  &:hover {
+    background-image: linear-gradient(to bottom, #e5f9f7 0%, #f0fffd 100%);
+
+    .checkbox {
+      cursor: pointer;
+    }
+  }
+
+  // Border between list items
+  & + .list-item {
+    border-top: 1px solid #f0f9fb;
+  }
+
+  // Checked
+  &.checked {
+    input[type="text"] {
+      color: @color-medium-rare;
+      text-decoration: line-through;
+    }
+
+    .delete-item {
+      display: inline-block;
+    }
+  }
+}
+
+.loading-item {
+  height: 3rem;
+  width: 100%;
+  background: @color-empty;
+  display: flex;
+  align-items: center;
+  line-height: 1rem;
+  padding-left: 16px;
+
+  .glow-checkbox,
+  .glow-text span {
+    animation: glow 1.5s ease-in-out infinite;
+    background: @color-rare;
+    color: transparent;
+    cursor: progress;
+    display: inline-block;
+  }
+
+  .glow-checkbox {
+    margin-right: 16px;
+    width: 12px;
+    height: 12px;
+  }
+
+  & + .loading-item {
+    border-top: 1px solid #f0f9fb;
+  }
+}
+
+.list-items {
+  position: relative;
+  background: @color-empty;
+  min-height: 288px;
+  .select-placeholder {
+    border: none;
+    width: 48px;
+  }
+}
