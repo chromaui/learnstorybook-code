@@ -3,4 +3,5 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest",
   },
+  transformIgnorePatterns: ["/node_modules/(?!(@storybook/.*\\.vue$))"],
 };

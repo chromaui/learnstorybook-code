@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Task Archived 1`] = `
+<div
+  class="list-item TASK_ARCHIVED"
+>
+  <label
+    class="checkbox"
+  >
+    <input
+      disabled=""
+      name="checked"
+      type="checkbox"
+    />
+    <span
+      class="checkbox-custom"
+    />
+  </label>
+  <div
+    class="title"
+  >
+    <input
+      placeholder="Input title"
+      readonly=""
+      type="text"
+    />
+  </div>
+  <div
+    class="actions"
+  >
+    <!--v-if-->
+  </div>
+</div>
+`;
+
+exports[`Storyshots Task Default 1`] = `
+<div
+  class="list-item TASK_INBOX"
+>
+  <label
+    class="checkbox"
+  >
+    <input
+      disabled=""
+      name="checked"
+      type="checkbox"
+    />
+    <span
+      class="checkbox-custom"
+    />
+  </label>
+  <div
+    class="title"
+  >
+    <input
+      placeholder="Input title"
+      readonly=""
+      type="text"
+    />
+  </div>
+  <div
+    class="actions"
+  >
+    <a>
+      <span
+        class="icon-star"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Task Pinned 1`] = `
+<div
+  class="list-item TASK_PINNED"
+>
+  <label
+    class="checkbox"
+  >
+    <input
+      disabled=""
+      name="checked"
+      type="checkbox"
+    />
+    <span
+      class="checkbox-custom"
+    />
+  </label>
+  <div
+    class="title"
+  >
+    <input
+      placeholder="Input title"
+      readonly=""
+      type="text"
+    />
+  </div>
+  <div
+    class="actions"
+  >
+    <a>
+      <span
+        class="icon-star"
+      />
+    </a>
+  </div>
+</div>
+`;
