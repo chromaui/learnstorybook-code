@@ -1,10 +1,10 @@
 import { Provider } from "react-redux";
 import store from "./lib/redux";
-import TaskList from "./components/TaskList";
+import InboxScreen from "./components/InboxScreen";
 function App() {
   return (
     <Provider store={store}>
-      <TaskList />
+      <InboxScreen />
     </Provider>
   );
 }
