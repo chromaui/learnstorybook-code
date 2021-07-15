@@ -6,12 +6,16 @@ import { PureInboxScreenComponent } from './pure-inbox-screen.component';
 
 import { TaskModule } from './task.module';
 
+import { Store, NgxsModule } from '@ngxs/store';
+import { TasksState } from '../state/task.state';
+
 export default {
   component: PureInboxScreenComponent,
   decorators: [
     moduleMetadata({
       declarations: [PureInboxScreenComponent],
-      imports: [CommonModule, TaskModule],
+      imports: [CommonModule, TaskModule, NgxsModule.forRoot([TasksState])],
+      providers: [Store],
     }),
   ],
   title: 'PureInboxScreen',
