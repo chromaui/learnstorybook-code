@@ -26,6 +26,7 @@
     "@storybook/addon-actions": "^6.3.4",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
+    "@storybook/addon-storyshots": "^6.3.4",
     "@storybook/angular": "^6.3.4",
     "@testing-library/angular": "^10.3.0",
     "@types/jest": "^26.0.20",
@@ -96,7 +97,8 @@
     },
     "transform": {
       "^.+\\.(ts|html)$": "ts-jest",
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.stories\\.[jt]sx?$": "@storybook/addon-storyshots/injectFileName"
     },
     "moduleFileExtensions": [
       "ts",
