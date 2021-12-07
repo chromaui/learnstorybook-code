@@ -106,3 +106,448 @@ exports[`Storyshots Task Pinned 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots TaskList Default 1`] = `
+<div
+  class="list-item TASK_PINNED"
+>
+  <label
+    class="checkbox"
+  >
+    <input
+      disabled=""
+      name="checked"
+      type="checkbox"
+    />
+    <span
+      aria-label="archiveTask-1"
+      class="checkbox-custom"
+    />
+  </label>
+  <div
+    class="title"
+  >
+    <input
+      placeholder="Input title"
+      readonly=""
+      type="text"
+    />
+  </div>
+  <div
+    class="actions"
+  >
+    <a>
+      <span
+        aria-label="pinTask-1"
+        class="icon-star"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList Empty 1`] = `
+<div
+  style="margin: 3em;"
+>
+  <div
+    class="list-items"
+  >
+    
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-1"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-1"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-2"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-2"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-3"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-3"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-4"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-4"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-5"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-5"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled=""
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-6"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        <a>
+          <span
+            aria-label="pinTask-6"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList Loading 1`] = `
+<div
+  style="margin: 3em;"
+>
+  <div
+    class="list-items"
+  >
+    <div
+      class="list-items"
+    >
+      <div
+        class="wrapper-message"
+      >
+        <span
+          class="icon-check"
+        />
+        <div
+          class="title-message"
+        >
+          You have no tasks
+        </div>
+        <div
+          class="subtitle-message"
+        >
+          Sit back and relax
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots TaskList With Pinned Tasks 1`] = `
+<div
+  style="margin: 3em;"
+>
+  <div
+    class="list-items"
+  >
+    
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    <div
+      class="loading-item"
+    >
+      <span
+        class="glow-checkbox"
+      />
+      <span
+        class="glow-text"
+      >
+        <span>
+          Loading
+        </span>
+         
+        <span>
+          cool
+        </span>
+         
+        <span>
+          state
+        </span>
+      </span>
+    </div>
+    
+  </div>
+</div>
+`;
