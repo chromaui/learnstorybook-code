@@ -29,6 +29,7 @@
     "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
+    "chromatic": "^6.2.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "grunt": "^1.4.1",
