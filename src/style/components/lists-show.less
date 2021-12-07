@@ -1,0 +1,34 @@
+@import "../utils.less";
+
+.page.lists-show {
+  min-height: 100vh;
+  background: @color-empty;
+
+  // Custom nav for lists-show
+  nav {
+    background: #d3edf4;
+    padding: 1.5rem 1.25rem;
+
+    text-align: center;
+    @media screen and (min-width: 40em) {
+      text-align: left;
+    }
+
+    .title-page {
+      .font-m1;
+      line-height: 2rem;
+      cursor: pointer;
+
+      white-space: nowrap;
+
+      .title-wrapper {
+        .ellipsized;
+        .type-bold;
+        color: @color-ancillary;
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
+      }
+    }
+  }
+}
