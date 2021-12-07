@@ -8,9 +8,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.4.8",
+    "@storybook/addon-essentials": "^6.4.8",
+    "@storybook/addon-interactions": "^6.4.8",
+    "@storybook/addon-links": "^6.4.8",
+    "@storybook/node-logger": "^6.4.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.4.8",
+    "@storybook/testing-library": "^0.0.7",
+    "@storybook/testing-react": "^1.2.2",
     "grunt": "^1.4.1",
     "grunt-contrib-less": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
@@ -29,6 +40,16 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
