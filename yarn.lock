@@ -3346,6 +3346,11 @@
   optionalDependencies:
     prettier "^1.18.2 || ^2.0.0"
 
+"@vue/devtools-api@^6.0.0-beta.11":
+  version "6.0.0-beta.20.1"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.20.1.tgz#5b499647e929c35baf2a66a399578f9aa4601142"
+  integrity sha512-R2rfiRY+kZugzWh9ZyITaovx+jpU4vgivAEAiz80kvh3yviiTU3CBuGuyWpSwGz9/C7TkSWVM/FtQRGlZ16n8Q==
+
 "@vue/preload-webpack-plugin@^1.1.0":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@vue/preload-webpack-plugin/-/preload-webpack-plugin-1.1.2.tgz#ceb924b4ecb3b9c43871c7a429a02f8423e621ab"
@@ -15098,6 +15103,13 @@ vue@^3.0.0:
     "@vue/runtime-dom" "3.2.24"
     "@vue/server-renderer" "3.2.24"
     "@vue/shared" "3.2.24"
+
+vuex@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
+  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 w3c-hr-time@^1.0.1:
   version "1.0.2"
