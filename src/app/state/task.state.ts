@@ -1,10 +1,12 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { Task } from '../models/task.model';
 
-// Defines the actions available to the app
+// defines the actions available to the app
 export const actions = {
   ARCHIVE_TASK: 'ARCHIVE_TASK',
   PIN_TASK: 'PIN_TASK',
+  // Defines the new error field we need
+  ERROR: 'APP_ERROR',
 };
 
 export class ArchiveTask {
@@ -18,6 +20,11 @@ export class PinTask {
 
   constructor(public payload: string) {}
 }
+// The class definition for our error field
+export class AppError {
+  static readonly type = actions.ERROR;
+  constructor(public payload: boolean) {}
+}
 
 // The initial state of our store when the app loads.
 // Usually you would fetch this from a server
@@ -30,6 +37,7 @@ const defaultTasks = {
 
 export class TaskStateModel {
   entities: { [id: number]: Task };
+  error: boolean;
 }
 
 // Sets the default state
@@ -37,6 +45,7 @@ export class TaskStateModel {
   name: 'tasks',
   defaults: {
     entities: defaultTasks,
+    error: false,
   },
 })
 export class TasksState {
@@ -46,6 +55,13 @@ export class TasksState {
     return Object.keys(entities).map((id) => entities[+id]);
   }
 
+  // Defines a new selector for the error field
+  @Selector()
+  static getError(state: TaskStateModel) {
+    const { error } = state;
+    return error;
+  }
+  //
   // Triggers the PinTask action, similar to redux
   @Action(PinTask)
   pinTask(
@@ -63,7 +79,7 @@ export class TasksState {
       entities,
     });
   }
-  // Triggers the archiveTask action, similar to redux
+  // Triggers the PinTask action, similar to redux
   @Action(ArchiveTask)
   archiveTask(
     { patchState, getState }: StateContext<TaskStateModel>,
@@ -78,6 +94,18 @@ export class TasksState {
 
     patchState({
       entities,
+    });
+  }
+
+  // Function to handle how the state should be updated when the action is triggered
+  @Action(AppError)
+  setAppError(
+    { patchState, getState }: StateContext<TaskStateModel>,
+    { payload }: AppError
+  ) {
+    const state = getState();
+    patchState({
+      error: !state.error,
     });
   }
 }
