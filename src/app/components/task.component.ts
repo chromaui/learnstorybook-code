@@ -25,6 +25,7 @@ import { Task } from '../models/task.model';
           [value]="task?.title"
           readonly="true"
           placeholder="Input title"
+          style="text-overflow: ellipsis;"
         />
       </div>
       <div class="actions">
