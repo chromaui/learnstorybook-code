@@ -35,6 +35,7 @@
     "@types/node": "^12.11.1",
     "@webcomponents/custom-elements": "^1.5.0",
     "babel-loader": "^8.2.2",
+    "chromatic": "^6.2.0",
     "codelyzer": "^6.0.0",
     "grunt": "^1.4.1",
     "grunt-contrib-less": "^3.0.0",
