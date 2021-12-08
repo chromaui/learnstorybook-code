@@ -58,7 +58,313 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "ArchiveTask",
+            "id": "class-ArchiveTask-056b07724e3d2c87c08628c986e3387a132e0e58be1afd3292f0161785e6fb936c1b5982acd53c4eefc987f6ead7b474156b72eeef0e6ff3afeb246e2940fdf5",
+            "file": "src/app/state/task.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { Task } from '../models/task.model';\n\n// Defines the actions available to the app\nexport const actions = {\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n};\n\nexport class ArchiveTask {\n  static readonly type = actions.ARCHIVE_TASK;\n\n  constructor(public payload: string) {}\n}\n\nexport class PinTask {\n  static readonly type = actions.PIN_TASK;\n\n  constructor(public payload: string) {}\n}\n\n// The initial state of our store when the app loads.\n// Usually you would fetch this from a server\nconst defaultTasks = {\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n};\n\nexport class TaskStateModel {\n  entities: { [id: number]: Task };\n}\n\n// Sets the default state\n@State<TaskStateModel>({\n  name: 'tasks',\n  defaults: {\n    entities: defaultTasks,\n  },\n})\nexport class TasksState {\n  @Selector()\n  static getAllTasks(state: TaskStateModel) {\n    const entities = state.entities;\n    return Object.keys(entities).map((id) => entities[+id]);\n  }\n\n  // Triggers the PinTask action, similar to redux\n  @Action(PinTask)\n  pinTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: PinTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_PINNED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n  // Triggers the archiveTask action, similar to redux\n  @Action(ArchiveTask)\n  archiveTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: ArchiveTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_ARCHIVED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "payload",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "payload",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "actions.ARCHIVE_TASK",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        124,
+                        144
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "PinTask",
+            "id": "class-PinTask-056b07724e3d2c87c08628c986e3387a132e0e58be1afd3292f0161785e6fb936c1b5982acd53c4eefc987f6ead7b474156b72eeef0e6ff3afeb246e2940fdf5",
+            "file": "src/app/state/task.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { Task } from '../models/task.model';\n\n// Defines the actions available to the app\nexport const actions = {\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n};\n\nexport class ArchiveTask {\n  static readonly type = actions.ARCHIVE_TASK;\n\n  constructor(public payload: string) {}\n}\n\nexport class PinTask {\n  static readonly type = actions.PIN_TASK;\n\n  constructor(public payload: string) {}\n}\n\n// The initial state of our store when the app loads.\n// Usually you would fetch this from a server\nconst defaultTasks = {\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n};\n\nexport class TaskStateModel {\n  entities: { [id: number]: Task };\n}\n\n// Sets the default state\n@State<TaskStateModel>({\n  name: 'tasks',\n  defaults: {\n    entities: defaultTasks,\n  },\n})\nexport class TasksState {\n  @Selector()\n  static getAllTasks(state: TaskStateModel) {\n    const entities = state.entities;\n    return Object.keys(entities).map((id) => entities[+id]);\n  }\n\n  // Triggers the PinTask action, similar to redux\n  @Action(PinTask)\n  pinTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: PinTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_PINNED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n  // Triggers the archiveTask action, similar to redux\n  @Action(ArchiveTask)\n  archiveTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: ArchiveTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_ARCHIVED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "payload",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "payload",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "payload",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "actions.PIN_TASK",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        124,
+                        144
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "TasksState",
+            "id": "class-TasksState-056b07724e3d2c87c08628c986e3387a132e0e58be1afd3292f0161785e6fb936c1b5982acd53c4eefc987f6ead7b474156b72eeef0e6ff3afeb246e2940fdf5",
+            "file": "src/app/state/task.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { Task } from '../models/task.model';\n\n// Defines the actions available to the app\nexport const actions = {\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n};\n\nexport class ArchiveTask {\n  static readonly type = actions.ARCHIVE_TASK;\n\n  constructor(public payload: string) {}\n}\n\nexport class PinTask {\n  static readonly type = actions.PIN_TASK;\n\n  constructor(public payload: string) {}\n}\n\n// The initial state of our store when the app loads.\n// Usually you would fetch this from a server\nconst defaultTasks = {\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n};\n\nexport class TaskStateModel {\n  entities: { [id: number]: Task };\n}\n\n// Sets the default state\n@State<TaskStateModel>({\n  name: 'tasks',\n  defaults: {\n    entities: defaultTasks,\n  },\n})\nexport class TasksState {\n  @Selector()\n  static getAllTasks(state: TaskStateModel) {\n    const entities = state.entities;\n    return Object.keys(entities).map((id) => entities[+id]);\n  }\n\n  // Triggers the PinTask action, similar to redux\n  @Action(PinTask)\n  pinTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: PinTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_PINNED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n  // Triggers the archiveTask action, similar to redux\n  @Action(ArchiveTask)\n  archiveTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: ArchiveTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_ARCHIVED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n}\n",
+            "properties": [],
+            "rawdescription": "\n",
+            "methods": [
+                {
+                    "name": "archiveTask",
+                    "args": [
+                        {
+                            "type": "StateContext<TaskStateModel>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "type": "ArchiveTask",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 68,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "Action",
+                            "stringifiedArguments": "ArchiveTask"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "type": "StateContext<TaskStateModel>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "type": "ArchiveTask",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAllTasks",
+                    "args": [
+                        {
+                            "name": "state",
+                            "type": "TaskStateModel",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "Selector",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "state",
+                            "type": "TaskStateModel",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pinTask",
+                    "args": [
+                        {
+                            "type": "StateContext<TaskStateModel>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "type": "PinTask",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "Action",
+                            "stringifiedArguments": "PinTask"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "type": "StateContext<TaskStateModel>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "type": "PinTask",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": []
+        },
+        {
+            "name": "TaskStateModel",
+            "id": "class-TaskStateModel-056b07724e3d2c87c08628c986e3387a132e0e58be1afd3292f0161785e6fb936c1b5982acd53c4eefc987f6ead7b474156b72eeef0e6ff3afeb246e2940fdf5",
+            "file": "src/app/state/task.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { State, Selector, Action, StateContext } from '@ngxs/store';\nimport { Task } from '../models/task.model';\n\n// Defines the actions available to the app\nexport const actions = {\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n};\n\nexport class ArchiveTask {\n  static readonly type = actions.ARCHIVE_TASK;\n\n  constructor(public payload: string) {}\n}\n\nexport class PinTask {\n  static readonly type = actions.PIN_TASK;\n\n  constructor(public payload: string) {}\n}\n\n// The initial state of our store when the app loads.\n// Usually you would fetch this from a server\nconst defaultTasks = {\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n};\n\nexport class TaskStateModel {\n  entities: { [id: number]: Task };\n}\n\n// Sets the default state\n@State<TaskStateModel>({\n  name: 'tasks',\n  defaults: {\n    entities: defaultTasks,\n  },\n})\nexport class TasksState {\n  @Selector()\n  static getAllTasks(state: TaskStateModel) {\n    const entities = state.entities;\n    return Object.keys(entities).map((id) => entities[+id]);\n  }\n\n  // Triggers the PinTask action, similar to redux\n  @Action(PinTask)\n  pinTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: PinTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_PINNED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n  // Triggers the archiveTask action, similar to redux\n  @Action(ArchiveTask)\n  archiveTask(\n    { patchState, getState }: StateContext<TaskStateModel>,\n    { payload }: ArchiveTask\n  ) {\n    const state = getState().entities;\n\n    const entities = {\n      ...state,\n      [payload]: { ...state[payload], state: 'TASK_ARCHIVED' },\n    };\n\n    patchState({\n      entities,\n    });\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "entities",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [],
     "components": [
         {
@@ -383,6 +689,104 @@
             "stylesData": ""
         },
         {
+            "name": "PureTaskListComponent",
+            "id": "component-PureTaskListComponent-92fa1b438976dd5be52462758e777b57732707ba39c6377f3a3052c4ff8b86f44c2facb6015bf99006b14e2e92f65d673b1c1bfe05dc66cf6de55908fd571931",
+            "file": "src/app/components/pure-task-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-pure-task-list",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"list-items\">\n  <app-task\n    *ngFor=\"let task of tasksInOrder\"\n    [task]=\"task\"\n    (onArchiveTask)=\"onArchiveTask.emit($event)\"\n    (onPinTask)=\"onPinTask.emit($event)\"\n  >\n  </app-task>\n  <div\n    *ngIf=\"tasksInOrder.length === 0 && !loading\"\n    class=\"wrapper-message\"\n  >\n    <span class=\"icon-check\"></span>\n    <div class=\"title-message\">You have no tasks</div>\n    <div class=\"subtitle-message\">Sit back and relax</div>\n  </div>\n  <div *ngIf=\"loading\">\n    <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n      <span class=\"glow-checkbox\"></span>\n      <span class=\"glow-text\">\n        <span>Loading</span> <span>cool</span> <span>state</span>\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "tasks",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onArchiveTask",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "EventEmitter<any>"
+                },
+                {
+                    "name": "onPinTask",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "EventEmitter<any>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { Task } from '../models/task.model';\n\n@Component({\n  selector: 'app-pure-task-list',\n  template: `\n    <div class=\"list-items\">\n      <app-task\n        *ngFor=\"let task of tasksInOrder\"\n        [task]=\"task\"\n        (onArchiveTask)=\"onArchiveTask.emit($event)\"\n        (onPinTask)=\"onPinTask.emit($event)\"\n      >\n      </app-task>\n      <div\n        *ngIf=\"tasksInOrder.length === 0 && !loading\"\n        class=\"wrapper-message\"\n      >\n        <span class=\"icon-check\"></span>\n        <div class=\"title-message\">You have no tasks</div>\n        <div class=\"subtitle-message\">Sit back and relax</div>\n      </div>\n      <div *ngIf=\"loading\">\n        <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n          <span class=\"glow-checkbox\"></span>\n          <span class=\"glow-text\">\n            <span>Loading</span> <span>cool</span> <span>state</span>\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class PureTaskListComponent {\n  /**\n   * @ignore\n   * Component property to define ordering of tasks\n   */\n  tasksInOrder: Task[] = [];\n\n  @Input() loading = false;\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onPinTask: EventEmitter<any> = new EventEmitter();\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();\n\n  @Input()\n  set tasks(arr: Task[]) {\n    this.tasksInOrder = [\n      ...arr.filter((t) => t.state === 'TASK_PINNED'),\n      ...arr.filter((t) => t.state !== 'TASK_PINNED'),\n    ];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "accessors": {
+                "tasks": {
+                    "name": "tasks",
+                    "setSignature": {
+                        "name": "tasks",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "arr",
+                                "type": "Task[]",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 50,
+                        "jsdoctags": [
+                            {
+                                "name": "arr",
+                                "type": "Task[]",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
             "name": "TaskComponent",
             "id": "component-TaskComponent-00f4c415fac11cbbb569e6a141de4db7a6cdd7417d0259ef01f140543132d14b3c175bd12465703c28c276a0855e5be7b1bdb5d90f67c724667d870bb1d5b922",
             "file": "src/app/components/task.component.ts",
@@ -532,7 +936,7 @@
         },
         {
             "name": "TaskListComponent",
-            "id": "component-TaskListComponent-d22c68774669b496fbed7d68db4601518cdbd95cddf7712dbe4377b674cef295ae73092f11d5ae3006ae96acea25b53ea1f29ecf2bb9918e9648faba8f6286d8",
+            "id": "component-TaskListComponent-fba5d6ad54e34a27d5349fae84fe486a6d6e6b4cd45b1dfd0d34a39cfbe089af9fec6b693f57b620e144433142ff2dbe4c2613ab4f63eabb6e9342e9301d8231",
             "file": "src/app/components/task-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -542,48 +946,90 @@
             "selector": "app-task-list",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"list-items\">\n  <app-task\n    *ngFor=\"let task of tasksInOrder\"\n    [task]=\"task\"\n    (onArchiveTask)=\"onArchiveTask.emit($event)\"\n    (onPinTask)=\"onPinTask.emit($event)\"\n  >\n  </app-task>\n  <div\n    *ngIf=\"tasksInOrder.length === 0 && !loading\"\n    class=\"wrapper-message\"\n  >\n    <span class=\"icon-check\"></span>\n    <div class=\"title-message\">You have no tasks</div>\n    <div class=\"subtitle-message\">Sit back and relax</div>\n  </div>\n  <div *ngIf=\"loading\">\n    <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n      <span class=\"glow-checkbox\"></span>\n      <span class=\"glow-text\">\n        <span>Loading</span> <span>cool</span> <span>state</span>\n      </span>\n    </div>\n  </div>\n</div>\n",
+            "template": "<app-pure-task-list\n  [tasks]=\"tasks$ | async\"\n  (onArchiveTask)=\"archiveTask($event)\"\n  (onPinTask)=\"pinTask($event)\"\n></app-pure-task-list>\n",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "name": "loading",
-                    "defaultValue": "false",
+                    "name": "tasks$",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 41,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "tasks",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 50,
-                    "type": "[]",
-                    "decorators": []
+                    "type": "Observable<Task[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "decorators": [
+                        {
+                            "name": "Select",
+                            "stringifiedArguments": "TasksState.getAllTasks"
+                        }
+                    ]
                 }
             ],
-            "outputsClass": [
+            "methodsClass": [
                 {
-                    "name": "onArchiveTask",
-                    "defaultValue": "new EventEmitter()",
+                    "name": "archiveTask",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
-                    "type": "EventEmitter<any>"
+                    "rawdescription": "\n\nComponent method to trigger the archiveTask event\n",
+                    "description": "<p>Component method to trigger the archiveTask event</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
-                    "name": "onPinTask",
-                    "defaultValue": "new EventEmitter()",
+                    "name": "pinTask",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
-                    "type": "EventEmitter<any>"
+                    "rawdescription": "\n\nComponent method to trigger the pinTask event\n",
+                    "description": "<p>Component method to trigger the pinTask event</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
-            "propertiesClass": [],
-            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -591,54 +1037,48 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { Task } from '../models/task.model';\n\n@Component({\n  selector: 'app-task-list',\n  template: `\n    <div class=\"list-items\">\n      <app-task\n        *ngFor=\"let task of tasksInOrder\"\n        [task]=\"task\"\n        (onArchiveTask)=\"onArchiveTask.emit($event)\"\n        (onPinTask)=\"onPinTask.emit($event)\"\n      >\n      </app-task>\n      <div\n        *ngIf=\"tasksInOrder.length === 0 && !loading\"\n        class=\"wrapper-message\"\n      >\n        <span class=\"icon-check\"></span>\n        <div class=\"title-message\">You have no tasks</div>\n        <div class=\"subtitle-message\">Sit back and relax</div>\n      </div>\n      <div *ngIf=\"loading\">\n        <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n          <span class=\"glow-checkbox\"></span>\n          <span class=\"glow-text\">\n            <span>Loading</span> <span>cool</span> <span>state</span>\n          </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class TaskListComponent {\n  /**\n   * @ignore\n   * Component property to define ordering of tasks\n   */\n  tasksInOrder: Task[] = [];\n\n  @Input() loading = false;\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onPinTask: EventEmitter<any> = new EventEmitter();\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();\n\n  @Input()\n  set tasks(arr: Task[]) {\n    this.tasksInOrder = [\n      ...arr.filter((t) => t.state === 'TASK_PINNED'),\n      ...arr.filter((t) => t.state !== 'TASK_PINNED'),\n    ];\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Select, Store } from '@ngxs/store';\nimport { TasksState, ArchiveTask, PinTask } from '../state/task.state';\nimport { Task } from '../models/task.model';\nimport { Observable } from 'rxjs';\n\n@Component({\n  selector: 'app-task-list',\n  template: `\n    <app-pure-task-list\n      [tasks]=\"tasks$ | async\"\n      (onArchiveTask)=\"archiveTask($event)\"\n      (onPinTask)=\"pinTask($event)\"\n    ></app-pure-task-list>\n  `,\n})\nexport class TaskListComponent {\n  @Select(TasksState.getAllTasks) tasks$: Observable<Task[]>;\n\n  constructor(private store: Store) {}\n\n  /**\n   * Component method to trigger the archiveTask event\n   */\n  archiveTask(id: string) {\n    this.store.dispatch(new ArchiveTask(id));\n  }\n\n  /**\n   * Component method to trigger the pinTask event\n   */\n  pinTask(id: string) {\n    this.store.dispatch(new PinTask(id));\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "accessors": {
-                "tasks": {
-                    "name": "tasks",
-                    "setSignature": {
-                        "name": "tasks",
-                        "type": "void",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store",
                         "deprecated": false,
                         "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "arr",
-                                "type": "Task[]",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 50,
-                        "jsdoctags": [
-                            {
-                                "name": "arr",
-                                "type": "Task[]",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
+                        "tagName": {
+                            "text": "param"
+                        }
                     }
-                }
+                ]
             }
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-cdd39b4eea4aeb0052daba431cb7f1f63bede0a94678792e645df4836b918dc4ed9279a75f791df25013931ec6936600a7937bb9f2f5f17e32360810a29bfc5e",
+            "id": "module-AppModule-cceee731b356e203f69c384f22b5b68767cb5abb3389ccd32a42762287d5c2158c320246de20f36880c3901ea3d9023417ed7bd6863e679ed5d5b963e9933574",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { BrowserModule } from '@angular/platform-browser';\nimport { NgModule } from '@angular/core';\n\nimport { AppComponent } from './app.component';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [BrowserModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { BrowserModule } from '@angular/platform-browser';\nimport { NgModule } from '@angular/core';\n\nimport { TaskModule } from './components/task.module';\nimport { NgxsModule } from '@ngxs/store';\nimport { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';\nimport { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';\n\nimport { AppComponent } from './app.component';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    TaskModule,\n    NgxsModule.forRoot([]),\n    NgxsReduxDevtoolsPluginModule.forRoot(),\n    NgxsLoggerPluginModule.forRoot(),\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -654,7 +1094,11 @@
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "TaskModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
@@ -673,10 +1117,73 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "TaskModule",
+            "id": "module-TaskModule-74bb1525e7a5c4a5d7e4fffdbfc65b045e5aeea958074ec2aa081a8db8bb19715fe27c8b20d2d6cc8595b055ea991f5dc8a71eb9664a8d1cdfd4f1bf0fc14102",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/components/task.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { NgxsModule } from '@ngxs/store';\n\nimport { TaskComponent } from './task.component';\nimport { TaskListComponent } from './task-list.component';\nimport { TasksState } from '../state/task.state';\nimport { PureTaskListComponent } from './pure-task-list.component';\n\n@NgModule({\n  imports: [CommonModule, NgxsModule.forFeature([TasksState])],\n  exports: [TaskComponent, TaskListComponent],\n  declarations: [TaskComponent, TaskListComponent, PureTaskListComponent],\n  providers: [],\n})\nexport class TaskModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "PureTaskListComponent"
+                        },
+                        {
+                            "name": "TaskComponent"
+                        },
+                        {
+                            "name": "TaskListComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "TaskComponent"
+                        },
+                        {
+                            "name": "TaskListComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "actions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/task.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n}"
+            },
             {
                 "name": "actionsData",
                 "ctype": "miscellaneous",
@@ -711,7 +1218,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/task-list.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -728,10 +1235,20 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "defaultTasks",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/task.state.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n}"
+            },
+            {
                 "name": "Empty",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/task-list.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -771,7 +1288,7 @@
                 "name": "Loading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/task-list.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -910,7 +1427,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/task-list.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -930,7 +1447,7 @@
                 "name": "WithPinnedTasks",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/task-list.stories.ts",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -941,6 +1458,28 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/state/task.state.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/task.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  ARCHIVE_TASK: 'ARCHIVE_TASK',\n  PIN_TASK: 'PIN_TASK',\n}"
+                },
+                {
+                    "name": "defaultTasks",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/task.state.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  1: { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  2: { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  3: { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  4: { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n}"
+                }
+            ],
             "src/app/components/task.stories.ts": [
                 {
                     "name": "actionsData",
@@ -1014,12 +1553,12 @@
                     "type": "literal type"
                 }
             ],
-            "src/app/components/task-list.stories.ts": [
+            "src/app/components/pure-task-list.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/task-list.stories.ts",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1029,7 +1568,7 @@
                     "name": "Empty",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/task-list.stories.ts",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1039,7 +1578,7 @@
                     "name": "Loading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/task-list.stories.ts",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1049,7 +1588,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/task-list.stories.ts",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1059,7 +1598,7 @@
                     "name": "WithPinnedTasks",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/task-list.stories.ts",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1238,16 +1777,16 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.component.ts",
+                "filePath": "src/app/components/pure-task-list.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "TaskListComponent",
+                "name": "PureTaskListComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.stories.ts",
+                "filePath": "src/app/components/pure-task-list.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1257,7 +1796,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.stories.ts",
+                "filePath": "src/app/components/pure-task-list.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1267,7 +1806,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.stories.ts",
+                "filePath": "src/app/components/pure-task-list.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1277,7 +1816,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.stories.ts",
+                "filePath": "src/app/components/pure-task-list.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1287,7 +1826,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/task-list.stories.ts",
+                "filePath": "src/app/components/pure-task-list.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1295,6 +1834,15 @@
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskListComponent",
+                "coveragePercent": 40,
+                "coverageCount": "2/5",
+                "status": "medium"
             },
             {
                 "filePath": "src/app/components/task.component.ts",
@@ -1362,6 +1910,62 @@
                 "name": "Task",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ArchiveTask",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "PinTask",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TasksState",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "TaskStateModel",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "actions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/task.state.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultTasks",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

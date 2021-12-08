@@ -1,144 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Task Archived 1`] = `
-<storybook-wrapper>
-  <app-task
-    ng-reflect-task="[object Object]"
-  >
-    <div
-      class="list-item TASK_ARCHIVED"
-    >
-      <label
-        class="checkbox"
-      >
-        <input
-          checked=""
-          disabled="true"
-          name="checked"
-          type="checkbox"
-        />
-        <span
-          aria-label="archiveTask-1"
-          class="checkbox-custom"
-        />
-      </label>
-      <div
-        class="title"
-      >
-        <input
-          placeholder="Input title"
-          readonly="true"
-          type="text"
-        />
-      </div>
-      <div
-        class="actions"
-      >
-        
-      </div>
-    </div>
-  </app-task>
-</storybook-wrapper>
-`;
-
-exports[`Storyshots Task Default 1`] = `
-<storybook-wrapper>
-  <app-task
-    ng-reflect-task="[object Object]"
-  >
-    <div
-      class="list-item TASK_INBOX"
-    >
-      <label
-        class="checkbox"
-      >
-        <input
-          disabled="true"
-          name="checked"
-          type="checkbox"
-        />
-        <span
-          aria-label="archiveTask-1"
-          class="checkbox-custom"
-        />
-      </label>
-      <div
-        class="title"
-      >
-        <input
-          placeholder="Input title"
-          readonly="true"
-          type="text"
-        />
-      </div>
-      <div
-        class="actions"
-      >
-        
-        <a>
-          <span
-            aria-label="pinTask-1"
-            class="icon-star"
-          />
-        </a>
-      </div>
-    </div>
-  </app-task>
-</storybook-wrapper>
-`;
-
-exports[`Storyshots Task Pinned 1`] = `
-<storybook-wrapper>
-  <app-task
-    ng-reflect-task="[object Object]"
-  >
-    <div
-      class="list-item TASK_PINNED"
-    >
-      <label
-        class="checkbox"
-      >
-        <input
-          disabled="true"
-          name="checked"
-          type="checkbox"
-        />
-        <span
-          aria-label="archiveTask-1"
-          class="checkbox-custom"
-        />
-      </label>
-      <div
-        class="title"
-      >
-        <input
-          placeholder="Input title"
-          readonly="true"
-          type="text"
-        />
-      </div>
-      <div
-        class="actions"
-      >
-        
-        <a>
-          <span
-            aria-label="pinTask-1"
-            class="icon-star"
-          />
-        </a>
-      </div>
-    </div>
-  </app-task>
-</storybook-wrapper>
-`;
-
-exports[`Storyshots TaskList Default 1`] = `
+exports[`Storyshots PureTaskList Default 1`] = `
 <storybook-wrapper>
   <div
     style="margin: 3em"
   >
-    <app-task-list
+    <app-pure-task-list
       ng-reflect-tasks="[object Object],[object Object"
     >
       <div
@@ -394,17 +261,17 @@ exports[`Storyshots TaskList Default 1`] = `
         
         
       </div>
-    </app-task-list>
+    </app-pure-task-list>
   </div>
 </storybook-wrapper>
 `;
 
-exports[`Storyshots TaskList Empty 1`] = `
+exports[`Storyshots PureTaskList Empty 1`] = `
 <storybook-wrapper>
   <div
     style="margin: 3em"
   >
-    <app-task-list
+    <app-pure-task-list
       ng-reflect-loading="false"
       ng-reflect-tasks=""
     >
@@ -432,17 +299,17 @@ exports[`Storyshots TaskList Empty 1`] = `
         </div>
         
       </div>
-    </app-task-list>
+    </app-pure-task-list>
   </div>
 </storybook-wrapper>
 `;
 
-exports[`Storyshots TaskList Loading 1`] = `
+exports[`Storyshots PureTaskList Loading 1`] = `
 <storybook-wrapper>
   <div
     style="margin: 3em"
   >
-    <app-task-list
+    <app-pure-task-list
       ng-reflect-loading="true"
       ng-reflect-tasks=""
     >
@@ -576,17 +443,17 @@ exports[`Storyshots TaskList Loading 1`] = `
           </div>
         </div>
       </div>
-    </app-task-list>
+    </app-pure-task-list>
   </div>
 </storybook-wrapper>
 `;
 
-exports[`Storyshots TaskList With Pinned Tasks 1`] = `
+exports[`Storyshots PureTaskList With Pinned Tasks 1`] = `
 <storybook-wrapper>
   <div
     style="margin: 3em"
   >
-    <app-task-list
+    <app-pure-task-list
       ng-reflect-tasks="[object Object],[object Object"
     >
       <div
@@ -842,7 +709,140 @@ exports[`Storyshots TaskList With Pinned Tasks 1`] = `
         
         
       </div>
-    </app-task-list>
+    </app-pure-task-list>
   </div>
+</storybook-wrapper>
+`;
+
+exports[`Storyshots Task Archived 1`] = `
+<storybook-wrapper>
+  <app-task
+    ng-reflect-task="[object Object]"
+  >
+    <div
+      class="list-item TASK_ARCHIVED"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          checked=""
+          disabled="true"
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-1"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="true"
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        
+      </div>
+    </div>
+  </app-task>
+</storybook-wrapper>
+`;
+
+exports[`Storyshots Task Default 1`] = `
+<storybook-wrapper>
+  <app-task
+    ng-reflect-task="[object Object]"
+  >
+    <div
+      class="list-item TASK_INBOX"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="true"
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-1"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="true"
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        
+        <a>
+          <span
+            aria-label="pinTask-1"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </app-task>
+</storybook-wrapper>
+`;
+
+exports[`Storyshots Task Pinned 1`] = `
+<storybook-wrapper>
+  <app-task
+    ng-reflect-task="[object Object]"
+  >
+    <div
+      class="list-item TASK_PINNED"
+    >
+      <label
+        class="checkbox"
+      >
+        <input
+          disabled="true"
+          name="checked"
+          type="checkbox"
+        />
+        <span
+          aria-label="archiveTask-1"
+          class="checkbox-custom"
+        />
+      </label>
+      <div
+        class="title"
+      >
+        <input
+          placeholder="Input title"
+          readonly="true"
+          type="text"
+        />
+      </div>
+      <div
+        class="actions"
+      >
+        
+        <a>
+          <span
+            aria-label="pinTask-1"
+            class="icon-star"
+          />
+        </a>
+      </div>
+    </div>
+  </app-task>
 </storybook-wrapper>
 `;
