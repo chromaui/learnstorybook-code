@@ -18,6 +18,7 @@
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
+    "@storybook/addon-storyshots": "^6.4.19",
     "@storybook/node-logger": "^6.4.19",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.19",
@@ -28,7 +29,8 @@
     "grunt-contrib-watch": "^1.1.0",
     "less": "^4.1.2",
     "msw": "^0.38.1",
-    "msw-storybook-addon": "^1.6.1"
+    "msw-storybook-addon": "^1.6.1",
+    "react-test-renderer": "^17.0.2"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
