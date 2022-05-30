@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 export default function Task({
   task: { id, title, state },
   onArchiveTask,
@@ -10,7 +10,7 @@ export default function Task({
       <label className="checkbox">
         <input
           type="checkbox"
-          defaultChecked={state === "TASK_ARCHIVED"}
+          defaultChecked={state === 'TASK_ARCHIVED'}
           disabled={true}
           name="checked"
         />
@@ -26,13 +26,13 @@ export default function Task({
           type="text"
           value={title}
           readOnly={true}
-          placeholder="Input title"
-          style={{ textOverflow: "ellipsis" }}
+          placeholder="Input"
+          style={{ textOverflow: 'ellipsis', background: 'blue' }}
         />
       </div>
 
       <div className="actions" onClick={(event) => event.stopPropagation()}>
-        {state !== "TASK_ARCHIVED" && (
+        {state !== 'TASK_ARCHIVED' && (
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a onClick={() => onPinTask(id)}>
             <span
@@ -44,7 +44,7 @@ export default function Task({
         )}
       </div>
     </div>
-  );
+  )
 }
 Task.propTypes = {
   task: PropTypes.shape({
@@ -54,4 +54,4 @@ Task.propTypes = {
   }),
   onArchiveTask: PropTypes.func,
   onPinTask: PropTypes.func,
-};
+}
