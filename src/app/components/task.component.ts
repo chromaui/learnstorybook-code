@@ -29,6 +29,7 @@ import { Task } from '../models/task.model';
           readonly="true"
           id="title-{{ task?.id }}"
           name="title-{{ task?.id }}"
+          style="text-overflow: ellipsis;"
         />
       </label>
       <button
