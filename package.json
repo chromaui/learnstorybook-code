@@ -48,6 +48,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^12.11.1",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.6.3",
     "jest": "^27.5.1",
     "jest-preset-angular": "^11.1.2",
     "msw": "^0.42.1",
