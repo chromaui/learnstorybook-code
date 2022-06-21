@@ -21,6 +21,9 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@ngxs/devtools-plugin": "^3.7.4",
+    "@ngxs/logger-plugin": "^3.7.4",
+    "@ngxs/store": "^3.7.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
