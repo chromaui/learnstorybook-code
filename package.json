@@ -9,7 +9,8 @@
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "init-msw": "msw init public/"
+    "init-msw": "msw init public/",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -26,6 +27,7 @@
     "@storybook/addon-links": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
     "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/test-runner": "^0.2.0",
     "@storybook/testing-library": "^0.0.13",
     "@storybook/vue3": "^6.5.9",
     "@vue/cli-plugin-babel": "~5.0.0",
