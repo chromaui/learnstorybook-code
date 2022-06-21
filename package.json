@@ -9,7 +9,8 @@
     "test": "jest --watchAll",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "@storybook/angular": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
     "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/test-runner": "^0.2.0",
     "@storybook/testing-library": "^0.0.13",
     "@types/jest": "^27.5.2",
     "@types/node": "^12.11.1",
