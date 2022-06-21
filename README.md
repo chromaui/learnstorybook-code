@@ -8,6 +8,8 @@
   Chromatic's Intro to Storybook tutorial code
 </h1>
 
+> This is a backup of the original code for the tutorial. It contains the CSS and HTML code for the tutorial.
+
 This repository holds the main React and Storybook configuration files for the Intro to Storybook tutorial.
 
 ## 🚅 Quick start
