@@ -40,6 +40,7 @@
 import { reactive, computed } from 'vue';
 
 export default {
+  // eslint-disable-next-line
   name: 'Task',
   props: {
     task: {
