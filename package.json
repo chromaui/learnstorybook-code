@@ -65,6 +65,7 @@
     "@storybook/test-runner": "^0.2.0",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^6.6.3",
     "msw": "^0.42.1",
     "msw-storybook-addon": "^1.6.3",
     "prop-types": "^15.8.1",
