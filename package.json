@@ -21,7 +21,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "init-msw": "msw init public/",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "chromatic": "npx chromatic --project-token=8353c0091357"
   },
   "eslintConfig": {
     "extends": [
@@ -65,7 +66,7 @@
     "@storybook/test-runner": "^0.2.0",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "chromatic": "^6.6.3",
+    "chromatic": "^6.7.4",
     "msw": "^0.42.1",
     "msw-storybook-addon": "^1.6.3",
     "prop-types": "^15.8.1",
@@ -73,5 +74,7 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "taskbox@0.1.0"
 }
