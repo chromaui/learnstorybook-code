@@ -6,7 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "init-msw": "msw init public/"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -15,6 +18,14 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/vue3": "^6.5.12",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-unit-jest": "~5.0.0",
@@ -22,8 +33,12 @@
     "@vue/test-utils": "^2.0.0-0",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.0.6",
+    "babel-loader": "^8.2.5",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "jest": "^27.0.5"
+    "jest": "^27.0.5",
+    "msw": "^0.47.3",
+    "msw-storybook-addon": "^1.6.3",
+    "vue-loader": "^16.8.3"
   }
 }
