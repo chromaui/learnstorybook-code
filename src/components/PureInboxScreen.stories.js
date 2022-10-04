@@ -1,3 +1,9 @@
+import { app } from "@storybook/vue3";
+
+import { createPinia } from "pinia";
+
+app.use(createPinia());
+
 import PureInboxScreen from "./PureInboxScreen.vue";
 
 export default {
