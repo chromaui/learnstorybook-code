@@ -2,20 +2,31 @@
 <template>
   <div class="list-items">
     <template v-if="loading">
-      loading
+     <div v-for="n in 6" :key="n" class="loading-item">
+       <span class="glow-checkbox" />
+       <span class="glow-text">
+         <span>Loading</span> <span>cool</span> <span>state</span>
+       </span>
+     </div>
     </template>
-    <template v-else-if="isEmpty">
-      empty
-    </template>
+
+    <div v-else-if="isEmpty" class="list-items">
+     <div class="wrapper-message">
+       <span class="icon-check" />
+       <p class="title-message">You have no tasks</p>
+       <p class="subtitle-message">Sit back and relax</p>
+     </div>
+    </div>
+
     <template v-else>
-      <Task
-        v-for="task in tasks"
-        :key="task.id"
-        :task="task"
-        @archive-task="onArchiveTask"
-        @pin-task="onPinTask"
-      />
-    </template>
+     <Task
+       v-for="task in tasksInOrder"
+       :key="task.id"
+       :task="task"
+       @archive-task="onArchiveTask"
+       @pin-task="onPinTask"
+     />
+   </template>
   </div>
 </template>
 
@@ -36,15 +47,21 @@ export default {
     props = reactive(props);
     return {
       isEmpty: computed(() => props.tasks.length === 0),
+     tasksInOrder:computed(()=>{
+       return [
+         ...props.tasks.filter(t => t.state === 'TASK_PINNED'),
+         ...props.tasks.filter(t => t.state !== 'TASK_PINNED'),
+       ]
+     }),
       /**
-      * Event handler for archiving tasks
-      */
+       * Event handler for archiving tasks
+       */
       onArchiveTask(taskId) {
-        emit('archive-task', taskId);
+        emit('archive-task',taskId);
       },
       /**
-      * Event handler for pinning tasks
-      */
+       * Event handler for pinning tasks
+       */
       onPinTask(taskId) {
         emit('pin-task', taskId);
       },
