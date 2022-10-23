@@ -37,11 +37,11 @@ Default.play = async ({ canvasElement }) => {
   // Waits for the component to transition from the loading state
   await waitForElementToBeRemoved(await canvas.findByTestId("loading"));
   // Waits for the component to be updated based on the store
-  await waitFor(async () => {
+  await waitFor(() => {
     // Simulates pinning the first task
-    await fireEvent.click(canvas.getByLabelText("pinTask-1"));
+    fireEvent.click(canvas.getByLabelText("pinTask-1"));
     // Simulates pinning the third task
-    await fireEvent.click(canvas.getByLabelText("pinTask-3"));
+    fireEvent.click(canvas.getByLabelText("pinTask-3"));
   });
 };
 export const Error = Template.bind({});
