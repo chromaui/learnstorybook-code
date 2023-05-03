@@ -45,5 +45,8 @@
     "prop-types": "^15.8.1",
     "storybook": "^7.0.6",
     "vite": "^4.2.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
