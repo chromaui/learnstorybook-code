@@ -10,7 +10,7 @@ body {
   padding: 0;
   font-size: 100%;
   outline: none;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: 400;
   color: #333;
   font-size: 16px;
@@ -36,7 +36,7 @@ label {
   *vertical-align: middle;
   line-height: normal;
   *overflow: visible;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 button::-moz-focus-inner,
@@ -46,9 +46,9 @@ input::-moz-focus-inner {
 }
 
 button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
   cursor: pointer;
   -webkit-appearance: button;
 }
@@ -75,52 +75,52 @@ input[type="submit"] {
 }
 
 @font-face {
-  font-family: "Nunito Sans";
+  font-family: 'Nunito Sans';
   font-style: italic;
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/nunitosans/v6/pe0oMImSLYBIv1o4X1M8cce4E9lKcw.ttf)
-    format("truetype");
+    format('truetype');
 }
 
 @font-face {
-  font-family: "Nunito Sans";
+  font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/nunitosans/v6/pe0qMImSLYBIv1o4X1M8cce9I94.ttf)
-    format("truetype");
+    format('truetype');
 }
 
 @font-face {
-  font-family: "Nunito Sans";
+  font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 800;
   src: url(https://fonts.gstatic.com/s/nunitosans/v6/pe03MImSLYBIv1o4X1M8cc8aBc5tU1Q.ttf)
-    format("truetype");
+    format('truetype');
 }
 
 .type-light {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
 }
 
 .type-bold {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 
 .type-italic {
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+input[type='text'],
+input[type='email'],
+input[type='password'],
 textarea {
   font-size: 14px;
   line-height: 20px;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-style: 400;
   padding: 0.75rem 0;
   line-height: 1.5rem !important;
@@ -139,12 +139,12 @@ textarea {
   width: 44px;
 }
 
-.checkbox input[type="checkbox"] {
+.checkbox input[type='checkbox'] {
   font-size: 1em;
   visibility: hidden;
 }
 
-.checkbox input[type="checkbox"] + span:before {
+.checkbox input[type='checkbox'] + span:before {
   position: absolute;
   top: 50%;
   right: auto;
@@ -155,24 +155,24 @@ textarea {
   transform: translate3d(-50%, -50%, 0);
   background: transparent;
   box-shadow: #2cc5d2 0 0 0 1px inset;
-  content: "";
+  content: '';
   display: block;
 }
 
-.checkbox input[type="checkbox"]:checked + span:before {
+.checkbox input[type='checkbox']:checked + span:before {
   font-size: 16px;
   line-height: 24px;
   box-shadow: none;
   color: #2cc5d2;
   margin-top: -1px;
-  font-family: "percolate";
+  font-family: 'percolate';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
 
-  content: "\e65e";
+  content: '\e65e';
 }
 
 .input-symbol {
@@ -180,13 +180,13 @@ textarea {
   position: relative;
 }
 
-.input-symbol.error [class^="icon-"],
-.input-symbol.error [class*=" icon-"] {
+.input-symbol.error [class^='icon-'],
+.input-symbol.error [class*=' icon-'] {
   color: #ff4400;
 }
 
-.input-symbol [class^="icon-"],
-.input-symbol [class*=" icon-"] {
+.input-symbol [class^='icon-'],
+.input-symbol [class*=' icon-'] {
   left: 1em;
 }
 
@@ -198,13 +198,13 @@ textarea {
   width: 100%;
 }
 
-.input-symbol input:focus + [class^="icon-"],
-.input-symbol input:focus + [class*=" icon-"] {
+.input-symbol input:focus + [class^='icon-'],
+.input-symbol input:focus + [class*=' icon-'] {
   color: #2cc5d2;
 }
 
-.input-symbol [class^="icon-"],
-.input-symbol [class*=" icon-"] {
+.input-symbol [class^='icon-'],
+.input-symbol [class*=' icon-'] {
   transition: all 300ms ease-in;
   transform: translate3d(0, -50%, 0);
   background: transparent;
@@ -217,20 +217,19 @@ textarea {
 }
 
 @font-face {
-  font-family: "percolate";
-  src: url("./assets/icon/percolate.eot?-5w3um4");
-  src: url("./assets/icon/percolate.eot?#iefix5w3um4")
-      format("embedded-opentype"),
-    url("./assets/icon/percolate.woff?5w3um4") format("woff"),
-    url("./assets/icon/percolate.ttf?5w3um4") format("truetype"),
-    url("./assets/icon/percolate.svg?5w3um4") format("svg");
+  font-family: 'percolate';
+  src: url('./assets/icon/percolate.eot?-5w3um4');
+  src: url('./assets/icon/percolate.eot?#iefix5w3um4') format('embedded-opentype'),
+    url('./assets/icon/percolate.woff?5w3um4') format('woff'),
+    url('./assets/icon/percolate.ttf?5w3um4') format('truetype'),
+    url('./assets/icon/percolate.svg?5w3um4') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
-  font-family: "percolate";
+[class^='icon-'],
+[class*=' icon-'] {
+  font-family: 'percolate';
 
   font-style: normal;
   font-weight: normal;
@@ -240,22 +239,22 @@ textarea {
 }
 
 .icon-star:before {
-  content: "\e608";
+  content: '\e608';
 }
 
 .icon-face-sad:before {
-  content: "\e60f";
+  content: '\e60f';
 }
 
 .icon-check:before {
-  content: "\e65e";
+  content: '\e65e';
 }
 
 .list-heading {
   letter-spacing: 0.3em;
   text-indent: 0.3em;
   text-transform: uppercase;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
   font-size: 11px;
   padding-left: 15px;
@@ -289,12 +288,12 @@ textarea {
   flex: 1;
 }
 
-.list-item input[type="text"] {
+.list-item input[type='text'] {
   background: transparent;
   width: 100%;
 }
 
-.list-item input[type="text"]:focus {
+.list-item input[type='text']:focus {
   cursor: text;
 }
 
@@ -326,8 +325,8 @@ textarea {
   color: #2cc5d2;
 }
 
-.list-item.TASK_ARCHIVED input[type="text"] {
-  color: #a0aec0;
+.list-item.TASK_ARCHIVED input[type='text'] {
+  color: #4a5568;
   text-decoration: line-through;
 }
 
@@ -343,7 +342,7 @@ textarea {
   border-top: 1px solid #f0f9fb;
 }
 
-.list-item.checked input[type="text"] {
+.list-item.checked input[type='text'] {
   color: #ccc;
   text-decoration: line-through;
 }
@@ -404,8 +403,8 @@ textarea {
   text-align: center;
 }
 
-.wrapper-message [class^="icon-"],
-.wrapper-message [class*=" icon-"] {
+.wrapper-message [class^='icon-'],
+.wrapper-message [class*=' icon-'] {
   font-size: 48px;
   line-height: 56px;
   color: #2cc5d2;
@@ -415,7 +414,7 @@ textarea {
 .wrapper-message .title-message {
   font-size: 16px;
   line-height: 24px;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
   color: #4a5568;
 }
@@ -449,7 +448,7 @@ textarea {
   line-height: 2rem;
   cursor: pointer;
   white-space: nowrap;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 800;
