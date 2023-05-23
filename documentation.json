@@ -1397,21 +1397,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-task-list.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {\n    tasks: [\n      { ...TaskStories.Default.args?.task, id: '1', title: 'Task 1' },\n      { ...TaskStories.Default.args?.task, id: '2', title: 'Task 2' },\n      { ...TaskStories.Default.args?.task, id: '3', title: 'Task 3' },\n      { ...TaskStories.Default.args?.task, id: '4', title: 'Task 4' },\n      { ...TaskStories.Default.args?.task, id: '5', title: 'Task 5' },\n      { ...TaskStories.Default.args?.task, id: '6', title: 'Task 6' },\n    ],\n  },\n}"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/components/pure-inbox-screen.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/pure-task-list.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    tasks: [\n      { ...TaskStories.Default.args?.task, id: '1', title: 'Task 1' },\n      { ...TaskStories.Default.args?.task, id: '2', title: 'Task 2' },\n      { ...TaskStories.Default.args?.task, id: '3', title: 'Task 3' },\n      { ...TaskStories.Default.args?.task, id: '4', title: 'Task 4' },\n      { ...TaskStories.Default.args?.task, id: '5', title: 'Task 5' },\n      { ...TaskStories.Default.args?.task, id: '6', title: 'Task 6' },\n    ],\n  },\n}"
             },
             {
                 "name": "Default",
@@ -1447,21 +1447,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  production: false,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
             },
             {
                 "name": "Error",
@@ -1567,21 +1567,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/components/pure-task-list.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<PureTaskListComponent>",
-                "defaultValue": "{\n  component: PureTaskListComponent,\n  title: 'PureTaskList',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      declarations: [PureTaskListComponent, TaskComponent],\n      imports: [CommonModule],\n    }),\n    //👇 Wraps our stories with a decorator\n    componentWrapperDecorator(\n      (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  render: (args: PureTaskListComponent) => ({\n    props: {\n      ...args,\n      onPinTask: TaskStories.actionsData.onPinTask,\n      onArchiveTask: TaskStories.actionsData.onArchiveTask,\n    },\n  }),\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/components/pure-inbox-screen.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PureInboxScreenComponent>",
                 "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n    applicationConfig({\n      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/pure-task-list.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<PureTaskListComponent>",
+                "defaultValue": "{\n  component: PureTaskListComponent,\n  title: 'PureTaskList',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      //👇 Imports both components to allow component composition with Storybook\n      declarations: [PureTaskListComponent, TaskComponent],\n      imports: [CommonModule],\n    }),\n    //👇 Wraps our stories with a decorator\n    componentWrapperDecorator(\n      (story) => `<div style=\"margin: 3em\">${story}</div>`\n    ),\n  ],\n  render: (args: PureTaskListComponent) => ({\n    props: {\n      ...args,\n      onPinTask: TaskStories.actionsData.onPinTask,\n      onArchiveTask: TaskStories.actionsData.onArchiveTask,\n    },\n  }),\n}"
             },
             {
                 "name": "meta",
@@ -1703,8 +1703,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PureTaskListComponent>",
-                "file": "src/app/components/pure-task-list.stories.ts",
+                "rawtype": "StoryObj<PureInboxScreenComponent>",
+                "file": "src/app/components/pure-inbox-screen.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1714,8 +1714,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PureInboxScreenComponent>",
-                "file": "src/app/components/pure-inbox-screen.stories.ts",
+                "rawtype": "StoryObj<PureTaskListComponent>",
+                "file": "src/app/components/pure-task-list.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1809,6 +1809,48 @@
                     "defaultValue": "{\n  args: {\n    task: {\n      ...Default.args?.task,\n      state: 'TASK_PINNED',\n    },\n  },\n}"
                 }
             ],
+            "src/app/components/pure-inbox-screen.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                },
+                {
+                    "name": "Error",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    error: true,\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PureInboxScreenComponent>",
+                    "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n    applicationConfig({\n      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "WithInteractions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    // Simulates pinning the first task\n    await fireEvent.click(canvas.getByLabelText('pinTask-1'));\n    // Simulates pinning the third task\n    await fireEvent.click(canvas.getByLabelText('pinTask-3'));\n  },\n}"
+                }
+            ],
             "src/app/components/pure-task-list.stories.ts": [
                 {
                     "name": "Default",
@@ -1861,46 +1903,16 @@
                     "defaultValue": "{\n  args: {\n    tasks: [\n      // Shaping the stories through args composition.\n      // Inherited data coming from the Default story.\n      ...(Default.args?.tasks?.slice(0, 5) || []),\n      { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },\n    ],\n  },\n}"
                 }
             ],
-            "src/app/components/pure-inbox-screen.stories.ts": [
+            "src/environments/environment.ts": [
                 {
-                    "name": "Default",
+                    "name": "environment",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "file": "src/environments/environment.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{}"
-                },
-                {
-                    "name": "Error",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {\n    error: true,\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<PureInboxScreenComponent>",
-                    "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n    applicationConfig({\n      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "WithInteractions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/pure-inbox-screen.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    // Simulates pinning the first task\n    await fireEvent.click(canvas.getByLabelText('pinTask-1'));\n    // Simulates pinning the third task\n    await fireEvent.click(canvas.getByLabelText('pinTask-3'));\n  },\n}"
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -1913,18 +1925,6 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  production: true,\n}"
-                }
-            ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false,\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -2098,19 +2098,6 @@
                     "kind": 177
                 }
             ],
-            "src/app/components/pure-task-list.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<PureTaskListComponent>",
-                    "file": "src/app/components/pure-task-list.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 177
-                }
-            ],
             "src/app/components/pure-inbox-screen.stories.ts": [
                 {
                     "name": "Story",
@@ -2118,6 +2105,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<PureInboxScreenComponent>",
                     "file": "src/app/components/pure-inbox-screen.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 177
+                }
+            ],
+            "src/app/components/pure-task-list.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<PureTaskListComponent>",
+                    "file": "src/app/components/pure-task-list.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
