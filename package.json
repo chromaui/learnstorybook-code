@@ -20,7 +20,8 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "init-msw": "msw init public/"
+    "init-msw": "msw init public/",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -33,6 +34,7 @@
     "@storybook/addon-interactions": "^7.5.2",
     "@storybook/addon-links": "^7.5.2",
     "@storybook/blocks": "^7.5.2",
+    "@storybook/test-runner": "^0.13.0",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/vue3": "^7.5.2",
     "@storybook/vue3-vite": "^7.5.2",
