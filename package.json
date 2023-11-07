@@ -19,7 +19,8 @@
     "test": "jest --no-cache",
     "storybook": "ng run taskbox:storybook",
     "build-storybook": "ng run taskbox:build-storybook",
-    "init-msw": "msw init src/"
+    "init-msw": "msw init src/",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +51,7 @@
     "@storybook/angular": "^7.5.2",
     "@storybook/blocks": "^7.5.2",
     "@storybook/jest": "^0.2.3",
+    "@storybook/test-runner": "^0.13.0",
     "@storybook/testing-library": "^0.2.2",
     "@types/jasmine": "~4.3.0",
     "@types/jest": "^29.5.1",
