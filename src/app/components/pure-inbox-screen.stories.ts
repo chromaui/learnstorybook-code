@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 
-import { moduleMetadata } from '@storybook/angular';
+import { importProvidersFrom } from '@angular/core';
+
+import { Store, NgxsModule } from '@ngxs/store';
+import { TasksState } from '../state/task.state';
+
+import { moduleMetadata, applicationConfig } from '@storybook/angular';
 
 import { CommonModule } from '@angular/common';
 
@@ -15,6 +20,9 @@ const meta: Meta<PureInboxScreenComponent> = {
   decorators: [
     moduleMetadata({
       imports: [CommonModule, TaskModule],
+    }),
+    applicationConfig({
+      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],
     }),
   ],
 };
