@@ -47,7 +47,7 @@
     "msw-storybook-addon": "^1.10.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.5.2",
-    "vite": "^4.2.0"
+    "vite": "^4.5.1"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
