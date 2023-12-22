@@ -369,6 +369,69 @@
             ],
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "TaskComponent",
+            "id": "component-TaskComponent-932274d0592043a469eca752e4c64a6bb235d06ce50041389cdb017a0e56b415eadd33908231d592d46db06f2097028d63953d4ad4758a31a6a784cc330bb2c3",
+            "file": "src/app/components/task.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-task",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"list-item\">\n  <label [attr.aria-label]=\"task.title + ''\" for=\"title\">\n    <input\n      type=\"text\"\n      [value]=\"task.title\"\n      readonly=\"true\"\n      id=\"title\"\n      name=\"title\"\n    />\n  </label>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "task",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe shape of the task object\n",
+                    "description": "<p>The shape of the task object</p>\n",
+                    "line": 23,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onArchiveTask",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onPinTask",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'app-task',\n  template: `\n    <div class=\"list-item\">\n      <label [attr.aria-label]=\"task.title + ''\" for=\"title\">\n        <input\n          type=\"text\"\n          [value]=\"task.title\"\n          readonly=\"true\"\n          id=\"title\"\n          name=\"title\"\n        />\n      </label>\n    </div>\n  `,\n})\nexport default class TaskComponent {\n  /**\n   * The shape of the task object\n   */\n  @Input() task: any;\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output()\n  onPinTask = new EventEmitter<Event>();\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output()\n  onArchiveTask = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
         }
     ],
     "modules": [
@@ -419,6 +482,36 @@
     ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  onPinTask: action('onPinTask'),\n  onArchiveTask: action('onArchiveTask'),\n}"
+            },
+            {
+                "name": "Archived",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    task: {\n      ...Default.args?.task,\n      state: 'TASK_ARCHIVED',\n    },\n  },\n}"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+            },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
@@ -520,6 +613,26 @@
                 "defaultValue": "{\n  title: 'Example/Page',\n  component: Page,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/angular/configure/story-layout\n    layout: 'fullscreen',\n  },\n  decorators: [\n    moduleMetadata({\n      declarations: [Button, Header],\n      imports: [CommonModule],\n    }),\n  ],\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TaskComponent>",
+                "defaultValue": "{\n  title: 'Task',\n  component: TaskComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  render: (args: TaskComponent) => ({\n    props: {\n      ...args,\n      onPinTask: actionsData.onPinTask,\n      onArchiveTask: actionsData.onArchiveTask,\n    },\n    template: `<app-task ${argsToTemplate(args)}></app-task>`,\n  }),\n}"
+            },
+            {
+                "name": "Pinned",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    task: {\n      ...Default.args?.task,\n      state: 'TASK_PINNED',\n    },\n  },\n}"
+            },
+            {
                 "name": "preview",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -594,10 +707,73 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TaskComponent>",
+                "file": "src/app/components/task.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/components/task.stories.ts": [
+                {
+                    "name": "actionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onPinTask: action('onPinTask'),\n  onArchiveTask: action('onArchiveTask'),\n}"
+                },
+                {
+                    "name": "Archived",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    task: {\n      ...Default.args?.task,\n      state: 'TASK_ARCHIVED',\n    },\n  },\n}"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    task: {\n      id: '1',\n      title: 'Test Task',\n      state: 'TASK_INBOX',\n    },\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TaskComponent>",
+                    "defaultValue": "{\n  title: 'Task',\n  component: TaskComponent,\n  excludeStories: /.*Data$/,\n  tags: ['autodocs'],\n  render: (args: TaskComponent) => ({\n    props: {\n      ...args,\n      onPinTask: actionsData.onPinTask,\n      onArchiveTask: actionsData.onArchiveTask,\n    },\n    template: `<app-task ${argsToTemplate(args)}></app-task>`,\n  }),\n}"
+                },
+                {
+                    "name": "Pinned",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    task: {\n      ...Default.args?.task,\n      state: 'TASK_PINNED',\n    },\n  },\n}"
+                }
+            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -792,6 +968,19 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "src/app/components/task.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TaskComponent>",
+                    "file": "src/app/components/task.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
@@ -817,6 +1006,65 @@
                 "name": "AppComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskComponent",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "actionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Archived",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Pinned",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
