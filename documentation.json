@@ -1630,7 +1630,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PureInboxScreenComponent>",
-                "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n    applicationConfig({\n      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -1887,7 +1887,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PureInboxScreenComponent>",
-                    "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: PureInboxScreenComponent,\n  title: 'PureInboxScreen',\n  tags: ['autodocs'],\n  decorators: [\n    moduleMetadata({\n      imports: [CommonModule, TaskModule],\n    }),\n    applicationConfig({\n      providers: [Store, importProvidersFrom(NgxsModule.forRoot([TasksState]))],\n    }),\n  ],\n}"
                 }
             ],
             "src/app/components/pure-task-list.stories.ts": [
