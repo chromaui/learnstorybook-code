@@ -4,7 +4,9 @@ import "../src/index.css";
 import { initialize, mswLoader } from "msw-storybook-addon";
 
 // Initialize MSW
-initialize();
+initialize({
+  quiet: true
+});
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
