@@ -1,24 +1,20 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { HttpResponse, http, delay } from 'msw'
-import { Provider } from 'react-redux'
 import MockDate from 'mockdate'
 
-import store from '../lib/store'
 import InboxScreen from './InboxScreen'
 import * as mocks from '../mocks/data'
 
 import {
   userEvent,
-  waitFor,
-  within,
   waitForElementToBeRemoved,
+  expect,
 } from '@storybook/test'
 import { getFormattedDate } from '#utils/date.mock.ts'
 
 const meta = {
   component: InboxScreen,
   title: 'InboxScreen',
-  decorators: [(story) => <Provider store={store}>{story()}</Provider>],
 } satisfies Meta<typeof InboxScreen>
 export default meta;
 
@@ -41,17 +37,27 @@ export const Default: Story = {
 
 export const PinnedTasks: Story = {
   ...Default,
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement)
+  play: async ({ canvas, step }) => {
     // Waits for the component to transition from the loading state
     await waitForElementToBeRemoved(await canvas.findByTestId('loading'))
-    // Waits for the component to be updated based on the store
-    await waitFor(async () => {
-      // Simulates pinning the first task
-      await userEvent.click(canvas.getByLabelText('Pin Learn more about Storybook'))
-      // Simulates pinning the third task
-      await userEvent.click(canvas.getByLabelText('Pin Schedule annual health check-up'))
+
+    await step('Ensure tasks are rendered in the initial order', async () => {
+      const listItems = canvas.getAllByRole("listitem");
+      await expect(listItems[0]).toHaveTextContent("Learn more about Storybook");
+      await expect(listItems[1]).toHaveTextContent("Go to the gym");
     })
+
+    await step('Pin "Go to the gym" task', async () => {
+      // Pin Learn more about Storybook and verify it moves to the top
+      const pinButton = canvas.getByLabelText("Pin Go to the gym");
+      await userEvent.click(pinButton);
+    });
+
+    await step('Ensure tasks order is changed', async () => {
+      const updatedListItems = canvas.getAllByRole("listitem");
+      await expect(updatedListItems[0]).toHaveTextContent("Go to the gym");
+      await expect(updatedListItems[1]).toHaveTextContent("Learn more about Storybook");
+    });
   },
 }
 

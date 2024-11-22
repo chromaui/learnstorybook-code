@@ -34,16 +34,13 @@
     }
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^9.0.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
     "@storybook/addon-a11y": "^8.5.0-alpha.9",
     "@storybook/addon-essentials": "^8.5.0-alpha.9",
-    "@storybook/blocks": "^8.5.0-alpha.9",
     "@storybook/experimental-addon-test": "^8.5.0-alpha.9",
     "@storybook/react": "^8.5.0-alpha.9",
     "@storybook/react-vite": "^8.5.0-alpha.9",
@@ -63,9 +60,7 @@
     "msw": "^2.3.0",
     "msw-storybook-addon": "^2.0.3",
     "playwright": "^1.49.0",
-    "prop-types": "^15.8.1",
     "storybook": "^8.5.0-alpha.9",
-    "ts-migrate": "^0.1.35",
     "typescript": "^5.6.3",
     "vite": "^5.2.0",
     "vitest": "^2.1.5"
