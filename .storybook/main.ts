@@ -5,8 +5,9 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
     '@storybook/experimental-addon-test',
+    '@chromatic-com/storybook',
+    '@storybook/addon-a11y',
   ],
   framework: {
     name: '@storybook/react-vite',

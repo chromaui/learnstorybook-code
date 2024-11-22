@@ -1,0 +1,23 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: yarn install
+
+      # Install Playwright browsers so Vitest browser mode can run story tests
+      - name: Install playwright dependencies
+        run: yarn exec playwright install chromium --with-deps
+
+      - name: Run tests
+        run: |
+          yarn test-storybook
