@@ -1,8 +1,9 @@
+import { Meta, StoryObj } from '@storybook/react'
 import { HttpResponse, http, delay } from 'msw'
 import { Provider } from 'react-redux'
 
-import InboxScreen from './InboxScreen'
 import store from '../lib/store'
+import InboxScreen from './InboxScreen'
 import { MockedState } from './TaskList.stories'
 
 import {
@@ -12,18 +13,21 @@ import {
   waitForElementToBeRemoved,
 } from '@storybook/test'
 
-export default {
+const meta = {
   component: InboxScreen,
   title: 'InboxScreen',
   decorators: [(story) => <Provider store={store}>{story()}</Provider>],
-}
+} satisfies Meta<typeof InboxScreen>
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
   parameters: {
     msw: {
       handlers: [
         http.get(
-          'https://jsonplaceholder.typicode.com/todos?userId=1',
+          'https://jsonplaceholder.typicode.com/todos',
           () => {
             return HttpResponse.json(MockedState.tasks)
           }
@@ -44,22 +48,24 @@ export const Default = {
     })
   },
 }
-export const Error = {
+
+export const Error: Story = {
   parameters: {
     msw: {
       handlers: [
-        http.get('https://jsonplaceholder.typicode.com/todos?userId=1', () => {
+        http.get('https://jsonplaceholder.typicode.com/todos', () => {
           return HttpResponse.json({}, { status: 500 })
         }),
       ],
     },
   },
 }
-export const Loading = {
+
+export const Loading: Story = {
   parameters: {
     msw: {
       handlers: [
-        http.get('https://jsonplaceholder.typicode.com/todos?userId=1', async () => {
+        http.get('https://jsonplaceholder.typicode.com/todos', async () => {
           await delay('infinite')
         }),
       ],

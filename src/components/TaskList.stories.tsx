@@ -1,12 +1,15 @@
-import TaskList from "./TaskList";
-import * as TaskStories from "./Task.stories";
-
+import { Meta, StoryObj } from '@storybook/react'
 import { Provider } from "react-redux";
-
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+import TaskList from "./TaskList";
+import * as TaskStories from "./Task.stories";
+import { State } from '../lib/store';
+import { ReactElement } from 'react';
+import { Task } from '../types';
+
 // A super-simple mock of the state of the store
-export const MockedState = {
+export const MockedState: State = {
   tasks: [
     { ...TaskStories.Default.args.task, id: "1", title: "Task 1" },
     { ...TaskStories.Default.args.task, id: "2", title: "Task 2" },
@@ -20,7 +23,7 @@ export const MockedState = {
 };
 
 // A super-simple mock of a redux store
-const Mockstore = ({ taskboxState, children }) => (
+const Mockstore = ({ taskboxState, children }: { taskboxState: State, children: ReactElement }) => (
   <Provider
     store={configureStore({
       reducer: {
@@ -44,24 +47,27 @@ const Mockstore = ({ taskboxState, children }) => (
   </Provider>
 );
 
-export default {
+const meta = {
   component: TaskList,
   title: "TaskList",
   tags: ["autodocs"],
   decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
   excludeStories: /.*MockedState$/,
-};
+} satisfies Meta<typeof TaskList>
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
   decorators: [
     (story) => <Mockstore taskboxState={MockedState}>{story()}</Mockstore>,
   ],
 };
 
-export const WithPinnedTasks = {
+export const WithPinnedTasks: Story = {
   decorators: [
     (story) => {
-      const pinnedtasks = [
+      const pinnedtasks: Task[] = [
         ...MockedState.tasks.slice(0, 5),
         { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
       ];
@@ -80,7 +86,7 @@ export const WithPinnedTasks = {
   ],
 };
 
-export const Loading = {
+export const Loading: Story = {
   decorators: [
     (story) => (
       <Mockstore
@@ -95,7 +101,7 @@ export const Loading = {
   ],
 };
 
-export const Empty = {
+export const Empty: Story = {
   decorators: [
     (story) => (
       <Mockstore

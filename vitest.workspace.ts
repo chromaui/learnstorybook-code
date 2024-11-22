@@ -1,12 +1,11 @@
-import { defineWorkspace } from 'vitest/config';
-import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
-
+import { defineWorkspace } from 'vitest/config'
+import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin'
 
 // More info at: https://storybook.js.org/docs/writing-tests/vitest-plugin
 export default defineWorkspace([
-  'vite.config.js',
+  'vite.config.ts',
   {
-    extends: 'vite.config.js',
+    extends: 'vite.config.ts',
     plugins: [
       // See options at: https://storybook.js.org/docs/writing-tests/vitest-plugin#storybooktest
       storybookTest({ configDir: '.storybook' }),
@@ -21,7 +20,7 @@ export default defineWorkspace([
       },
       // Make sure to adjust this pattern to match your stories files.
       include: ['**/*.stories.?(m)[jt]s?(x)'],
-      setupFiles: ['.storybook/vitest.setup.js'],
+      setupFiles: ['.storybook/vitest.setup.ts'],
     },
   },
-]);
+])
