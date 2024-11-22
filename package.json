@@ -22,6 +22,17 @@
     "storybook": "storybook dev -p 6006",
     "test-storybook": "vitest --project=storybook"
   },
+  "imports": {
+    "#*": [
+      "./src/*",
+      "./src/*.ts",
+      "./src/*.tsx"
+    ],
+    "#utils/date": {
+      "storybook": "./src/utils/date.mock.ts",
+      "default": "./src/utils/date.ts"
+    }
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
@@ -30,13 +41,13 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
-    "@storybook/addon-a11y": "^8.4.0",
-    "@storybook/addon-essentials": "^8.4.0",
-    "@storybook/blocks": "^8.4.0",
-    "@storybook/experimental-addon-test": "^8.4.4",
-    "@storybook/react": "^8.4.0",
-    "@storybook/react-vite": "^8.4.0",
-    "@storybook/test": "^8.4.0",
+    "@storybook/addon-a11y": "^8.5.0-alpha.9",
+    "@storybook/addon-essentials": "^8.5.0-alpha.9",
+    "@storybook/blocks": "^8.5.0-alpha.9",
+    "@storybook/experimental-addon-test": "^8.5.0-alpha.9",
+    "@storybook/react": "^8.5.0-alpha.9",
+    "@storybook/react-vite": "^8.5.0-alpha.9",
+    "@storybook/test": "^8.5.0-alpha.9",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
@@ -48,11 +59,12 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "eslint-plugin-storybook": "^0.8.0",
+    "mockdate": "^3.0.5",
     "msw": "^2.3.0",
     "msw-storybook-addon": "^2.0.3",
     "playwright": "^1.49.0",
     "prop-types": "^15.8.1",
-    "storybook": "^8.4.0",
+    "storybook": "^8.5.0-alpha.9",
     "ts-migrate": "^0.1.35",
     "typescript": "^5.6.3",
     "vite": "^5.2.0",
@@ -61,5 +73,5 @@
   "msw": {
     "workerDirectory": "public"
   },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "yarn@4.5.2"
 }

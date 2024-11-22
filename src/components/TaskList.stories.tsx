@@ -1,23 +1,17 @@
-import { Meta, StoryObj } from '@storybook/react'
+import type { ReactElement } from 'react';
+import type { Meta, StoryObj } from '@storybook/react'
 import { Provider } from "react-redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import TaskList from "./TaskList";
-import * as TaskStories from "./Task.stories";
 import { State } from '../lib/store';
-import { ReactElement } from 'react';
 import { Task } from '../types';
+import * as mocks from "../mocks/data";
+import { expect, userEvent } from '@storybook/test';
 
 // A super-simple mock of the state of the store
-export const MockedState: State = {
-  tasks: [
-    { ...TaskStories.Default.args.task, id: "1", title: "Task 1" },
-    { ...TaskStories.Default.args.task, id: "2", title: "Task 2" },
-    { ...TaskStories.Default.args.task, id: "3", title: "Task 3" },
-    { ...TaskStories.Default.args.task, id: "4", title: "Task 4" },
-    { ...TaskStories.Default.args.task, id: "5", title: "Task 5" },
-    { ...TaskStories.Default.args.task, id: "6", title: "Task 6" },
-  ],
+const defaultTaskboxState: State = {
+  tasks: mocks.tasks,
   status: "idle",
   error: null,
 };
@@ -52,7 +46,6 @@ const meta = {
   title: "TaskList",
   tags: ["autodocs"],
   decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
-  excludeStories: /.*MockedState$/,
 } satisfies Meta<typeof TaskList>
 export default meta;
 
@@ -60,7 +53,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   decorators: [
-    (story) => <Mockstore taskboxState={MockedState}>{story()}</Mockstore>,
+    (story) => <Mockstore taskboxState={defaultTaskboxState}>{story()}</Mockstore>,
   ],
 };
 
@@ -68,14 +61,14 @@ export const WithPinnedTasks: Story = {
   decorators: [
     (story) => {
       const pinnedtasks: Task[] = [
-        ...MockedState.tasks.slice(0, 5),
+        ...defaultTaskboxState.tasks.slice(0, 5),
         { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
       ];
 
       return (
         <Mockstore
           taskboxState={{
-            ...MockedState,
+            ...defaultTaskboxState,
             tasks: pinnedtasks,
           }}
         >
@@ -91,7 +84,7 @@ export const Loading: Story = {
     (story) => (
       <Mockstore
         taskboxState={{
-          ...MockedState,
+          ...defaultTaskboxState,
           status: "loading",
         }}
       >
@@ -106,7 +99,7 @@ export const Empty: Story = {
     (story) => (
       <Mockstore
         taskboxState={{
-          ...MockedState,
+          ...defaultTaskboxState,
           tasks: [],
         }}
       >
@@ -114,4 +107,30 @@ export const Empty: Story = {
       </Mockstore>
     ),
   ],
+};
+
+export const TestPinBehavior: Story = {
+  ...Default,
+  play: async ({ canvas, step }) => {
+
+    await step('Ensure tasks are rendered in the initial order', async () => {
+      const listItems = canvas.getAllByRole("listitem");
+      await expect(listItems[0]).toHaveTextContent("Learn more about Storybook");
+      await expect(listItems[1]).toHaveTextContent("Go to the gym");
+    })
+
+    await step('Pin "Go to the gym" task', async () => {
+      // Pin Learn more about Storybook and verify it moves to the top
+      const pinButton = canvas.getByLabelText("Pin Go to the gym");
+      await userEvent.click(pinButton);
+    });
+
+    await step('Ensure tasks order is changed', async () => {
+      const updatedListItems = canvas.getAllByRole("listitem");
+      await expect(updatedListItems[0]).toHaveTextContent("Go to the gym");
+      await expect(updatedListItems[1]).toHaveTextContent("Learn more about Storybook");
+    });
+  },
+  // hide the story from autodocs page as it's intended for test purposes only
+  tags: ['!autodocs']
 };

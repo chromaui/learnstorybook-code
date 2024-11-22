@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test';
+import { expect, fn, userEvent } from '@storybook/test';
+import * as mocks from '../mocks/data'
 
 import Task from "./Task";
 
@@ -18,11 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    task: {
-      id: "1",
-      title: "Test Task",
-      state: "TASK_INBOX",
-    },
+    task: mocks.task,
   },
 };
 
@@ -44,13 +41,23 @@ export const Archived: Story = {
   },
 };
 
-const longTitleString = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
-
 export const LongTitle: Story = {
   args: {
     task: {
       ...Default.args.task,
-      title: longTitleString,
+      title: `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`,
     },
   },
 };
+
+export const Test: Story = {
+  ...Default,
+  play: async({ canvas, args }) => {
+    await userEvent.click(canvas.getByLabelText('Pin Learn more about Storybook'))
+    await expect(args.onPinTask).toHaveBeenCalledWith(mocks.task.id)
+
+    await userEvent.click(canvas.getByLabelText('Archive Learn more about Storybook'))
+    await expect(args.onArchiveTask).toHaveBeenCalledWith(mocks.task.id)
+  },
+  tags: ['!autodocs']
+}

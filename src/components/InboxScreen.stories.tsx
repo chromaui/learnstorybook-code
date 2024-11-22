@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { HttpResponse, http, delay } from 'msw'
 import { Provider } from 'react-redux'
+import MockDate from 'mockdate'
 
 import store from '../lib/store'
 import InboxScreen from './InboxScreen'
-import { MockedState } from './TaskList.stories'
+import * as mocks from '../mocks/data'
 
 import {
   userEvent,
@@ -12,6 +13,7 @@ import {
   within,
   waitForElementToBeRemoved,
 } from '@storybook/test'
+import { getFormattedDate } from '#utils/date.mock.ts'
 
 const meta = {
   component: InboxScreen,
@@ -29,12 +31,16 @@ export const Default: Story = {
         http.get(
           'https://jsonplaceholder.typicode.com/todos',
           () => {
-            return HttpResponse.json(MockedState.tasks)
+            return HttpResponse.json(mocks.tasks)
           }
         ),
       ],
     },
   },
+}
+
+export const PinnedTasks: Story = {
+  ...Default,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     // Waits for the component to transition from the loading state
@@ -42,9 +48,9 @@ export const Default: Story = {
     // Waits for the component to be updated based on the store
     await waitFor(async () => {
       // Simulates pinning the first task
-      await userEvent.click(canvas.getByLabelText('pinTask-1'))
+      await userEvent.click(canvas.getByLabelText('Pin Learn more about Storybook'))
       // Simulates pinning the third task
-      await userEvent.click(canvas.getByLabelText('pinTask-3'))
+      await userEvent.click(canvas.getByLabelText('Pin Schedule annual health check-up'))
     })
   },
 }
@@ -71,4 +77,18 @@ export const Loading: Story = {
       ],
     },
   },
+}
+
+export const MockedDateWithModuleMocking: Story = {
+  ...Default,
+  beforeEach: async () => {
+    getFormattedDate.mockReturnValue('August 23, 1993')
+  }
+}
+
+export const MockedDateWithDateMocking: Story = {
+  ...Default,
+  beforeEach: async () => {
+    MockDate.set('2000-01-01T12:24:02Z')
+  }
 }

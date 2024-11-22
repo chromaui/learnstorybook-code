@@ -12,11 +12,12 @@ export default function TaskComponent({
   onPinTask,
 }: TaskProps) {
   return (
-    <div className={`list-item ${state}`}>
+    <li className={`list-item ${state}`}>
       <label
         htmlFor="checked"
-        aria-label={`archiveTask-${id}`}
+        aria-label={`Archive ${title}`}
         className="checkbox"
+        onClick={() => onArchiveTask(id)} 
       >
         <input
           type="checkbox"
@@ -25,18 +26,11 @@ export default function TaskComponent({
           id={`archiveTask-${id}`}
           checked={state === "TASK_ARCHIVED"}
         />
-        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} />
+        <span className="checkbox-custom"/>
       </label>
 
       <label htmlFor="title" aria-label={title} className="title">
-        <input
-          type="text"
-          value={title}
-          readOnly={true}
-          name="title"
-          placeholder="Input title"
-          style={{ textOverflow: "ellipsis" }}
-        />
+        {title}
       </label>
 
       {state !== "TASK_ARCHIVED" && (
@@ -44,12 +38,12 @@ export default function TaskComponent({
           className="pin-button"
           onClick={() => onPinTask(id)}
           id={`pinTask-${id}`}
-          aria-label={`pinTask-${id}`}
+          aria-label={`Pin ${title}`}
           key={`pinTask-${id}`}
         >
           <span className={`icon-star`} />
         </button>
       )}
-    </div>
+    </li>
   );
 }

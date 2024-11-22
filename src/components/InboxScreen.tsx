@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 import { useDispatch, useSelector } from "../lib/hooks";
 import { fetchTasks } from "../lib/store";
 import { selectTaskbox } from "../lib/selectors";
 import TaskList from "./TaskList";
+import { getFormattedDate } from "#utils/date";
 
 export default function InboxScreen() {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ export default function InboxScreen() {
   useEffect(() => {
     dispatch(fetchTasks());
   }, []);
+
+  const today = useMemo(() => getFormattedDate(new Date()), []);
 
   if (error) {
     return (
@@ -28,7 +31,7 @@ export default function InboxScreen() {
   return (
     <div className="page lists-show">
       <nav>
-        <h1 className="title-page">Taskbox</h1>
+        <h1 className="title-page">Taskbox - {today}</h1>
       </nav>
       <TaskList />
     </div>

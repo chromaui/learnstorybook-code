@@ -19,29 +19,25 @@ export default function TaskList() {
     // We're dispatching the Archive event back to our store
     dispatch(updateTaskState({ id, newTaskState: "TASK_ARCHIVED" }));
   };
-  const LoadingRow = (
-    <div className="loading-item">
-      <span className="glow-checkbox" />
-      <span className="glow-text">
-        <span>Loading</span> <span>cool</span> <span>state</span>
-      </span>
-    </div>
-  );
+
   if (status === "loading") {
     return (
-      <div className="list-items" data-testid="loading" key={"loading"}>
-        {LoadingRow}
-        {LoadingRow}
-        {LoadingRow}
-        {LoadingRow}
-        {LoadingRow}
-        {LoadingRow}
+      <div className="list-items" data-testid="loading">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <div key={index} className="loading-item">
+            <span className="glow-checkbox" />
+            <span className="glow-text">
+              <span>Loading</span> <span>cool</span> <span>state</span>
+            </span>
+          </div>
+        ))}
       </div>
     );
   }
+
   if (tasks.length === 0) {
     return (
-      <div className="list-items" key={"empty"} data-testid="empty">
+      <div className="list-items" key="empty" data-testid="empty">
         <div className="wrapper-message">
           <span className="icon-check" />
           <p className="title-message">You have no tasks</p>
@@ -50,9 +46,8 @@ export default function TaskList() {
       </div>
     );
   }
-
   return (
-    <div className="list-items" data-testid="success" key={"success"}>
+    <ul className="list-items" data-testid="success">
       {tasks.map((task) => (
         <Task
           key={task.id}
@@ -61,6 +56,6 @@ export default function TaskList() {
           onArchiveTask={(task) => archiveTask(task)}
         />
       ))}
-    </div>
+    </ul>
   );
 }
