@@ -30,6 +30,9 @@
     "@angular/platform-browser": "^19.0.6",
     "@angular/platform-browser-dynamic": "^19.0.6",
     "@angular/router": "^19.0.6",
+    "@ngxs/devtools-plugin": "^19.0.0",
+    "@ngxs/logger-plugin": "^19.0.0",
+    "@ngxs/store": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
