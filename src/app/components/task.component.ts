@@ -32,6 +32,7 @@ import { Task } from '../models/task.model';
           id="title-{{ task?.id }}"
           name="title-{{ task?.id }}"
           placeholder="Input title"
+          style="text-overflow: ellipsis;"
         />
       </label>
       <button
