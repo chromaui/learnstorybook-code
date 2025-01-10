@@ -18,7 +18,8 @@
     "watch": "ng build --watch --configuration development",
     "storybook": "ng run taskbox:storybook",
     "build-storybook": "ng run taskbox:build-storybook",
-    "init-msw": "msw init src/"
+    "init-msw": "msw init src/",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +50,7 @@
     "@storybook/angular": "^8.3.3",
     "@storybook/blocks": "^8.3.3",
     "@storybook/test": "^8.3.3",
+    "@storybook/test-runner": "^0.21.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
