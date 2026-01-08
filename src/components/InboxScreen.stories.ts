@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
+import { waitFor, waitForElementToBeRemoved } from 'storybook/test'
+
 import { http, HttpResponse } from 'msw'
 
 import InboxScreen from './InboxScreen.vue'
@@ -24,6 +26,13 @@ export const Default: Story = {
         }),
       ],
     },
+  },
+  play: async ({ canvas, userEvent }: any) => {
+    await waitForElementToBeRemoved(await canvas.findByTestId('empty'))
+    await waitFor(async () => {
+      await userEvent.click(canvas.getByLabelText('pinTask-1'))
+      await userEvent.click(canvas.getByLabelText('pinTask-3'))
+    })
   },
 }
 
