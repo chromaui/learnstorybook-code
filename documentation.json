@@ -404,6 +404,74 @@
             ],
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "TaskComponent",
+            "id": "component-TaskComponent-346b3318396a572c850702ee725454f484ee45cf9b3f8dcbc837a48ddacef5f407b33324199f8c26c68d982a66202fc0f82769950efa268dbe9bd403d75283c6",
+            "file": "src/app/components/task.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-task",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div class=\"list-item\">\n  <label [attr.aria-label]=\"task.title + ''\" for=\"title\">\n    <input type=\"text\" [value]=\"task.title\" readonly=\"true\" id=\"title\" name=\"title\" />\n  </label>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "task",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nThe shape of the task object\n",
+                    "description": "<p>The shape of the task object</p>\n",
+                    "line": 20,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onArchiveTask",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onPinTask",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'app-task',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"list-item\">\n      <label [attr.aria-label]=\"task.title + ''\" for=\"title\">\n        <input type=\"text\" [value]=\"task.title\" readonly=\"true\" id=\"title\" name=\"title\" />\n      </label>\n    </div>\n  `,\n})\nexport class TaskComponent {\n  /**\n   * The shape of the task object\n   */\n  @Input() task: any;\n\n  @Output()\n  onPinTask = new EventEmitter<Event>();\n\n  @Output()\n  onArchiveTask = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
         }
     ],
     "modules": [],
@@ -469,7 +537,7 @@
         "children": []
     },
     "coverage": {
-        "count": 11,
+        "count": 13,
         "status": "low",
         "files": [
             {
@@ -499,6 +567,15 @@
                 "name": "App",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/task.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskComponent",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
                 "status": "low"
             },
             {
