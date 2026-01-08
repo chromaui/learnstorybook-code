@@ -1,10 +1,23 @@
 <template>
   <div class="list-items">
-    <template v-if="loading"> loading </template>
-    <template v-else-if="isEmpty"> empty </template>
+    <template v-if="loading">
+      <div v-for="n in 6" :key="n" class="loading-item" data-testid="loading" id="loading">
+        <span class="glow-checkbox" />
+        <span class="glow-text"> <span>Loading</span> <span>cool</span> <span>state</span> </span>
+      </div>
+    </template>
+
+    <div v-else-if="isEmpty" class="list-items" data-testid="empty" id="empty">
+      <div class="wrapper-message">
+        <span class="icon-check" />
+        <p class="title-message">You have no tasks</p>
+        <p class="subtitle-message">Sit back and relax</p>
+      </div>
+    </div>
+
     <template v-else>
       <Task
-        v-for="task in tasks"
+        v-for="task in tasksInOrder"
         :key="task.id"
         :task="task"
         @archive-task="onArchiveTask"
@@ -28,6 +41,12 @@ type TaskListProps = {
 const props = defineProps<TaskListProps>()
 
 const isEmpty = computed(() => props.tasks.length === 0)
+const tasksInOrder = computed(() => {
+  return [
+    ...props.tasks.filter((t) => t.state === 'TASK_PINNED'),
+    ...props.tasks.filter((t) => t.state !== 'TASK_PINNED'),
+  ]
+})
 
 const emit = defineEmits<{
   (e: 'archive-task', id: string): void
