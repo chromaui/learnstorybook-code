@@ -33,13 +33,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import type { TaskData } from '../types'
 
-type TaskData = {
-  id: string
-  title: string
-  state: 'TASK_ARCHIVED' | 'TASK_INBOX' | 'TASK_PINNED'
-}
+import { computed } from 'vue'
 
 type TaskProps = {
   /** Composition of the task */
@@ -50,9 +46,7 @@ type TaskProps = {
   onPinTask: (id: string) => void
 }
 
-const props = withDefaults(defineProps<TaskProps>(), {
-  task: { id: '', title: '', state: 'TASK_INBOX' },
-})
+const props = defineProps<TaskProps>()
 
 const classes = computed(() => {
   return `list-item ${props.task.state}`
