@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+import { http, HttpResponse } from "msw";
+
+import { MockedState } from "./TaskList.stories";
+
 import { Provider } from "react-redux";
 
 import InboxScreen from "./InboxScreen";
@@ -16,6 +20,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get("https://jsonplaceholder.typicode.com/todos?userId=1", () => {
+          return HttpResponse.json(MockedState.tasks);
+        }),
+      ],
+    },
+  },
+};
 
-export const Error: Story = {};
+export const Error: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get("https://jsonplaceholder.typicode.com/todos?userId=1", () => {
+          return new HttpResponse(null, {
+            status: 403,
+          });
+        }),
+      ],
+    },
+  },
+};
