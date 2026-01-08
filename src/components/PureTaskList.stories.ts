@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import TaskList from './TaskList.vue'
+import PureTaskList from './PureTaskList.vue'
 
 import * as TaskStories from './Task.stories'
 
@@ -14,15 +14,15 @@ export const TaskListData = [
 ]
 
 const meta = {
-  component: TaskList,
-  title: 'TaskList',
+  component: PureTaskList,
+  title: 'PureTaskList',
   tags: ['autodocs'],
   excludeStories: /.*Data$/,
   decorators: [() => ({ template: '<div style="margin: 3em;"><story/></div>' })],
   args: {
     ...TaskStories.TaskData.events,
   },
-} satisfies Meta<typeof TaskList>
+} satisfies Meta<typeof PureTaskList>
 
 export default meta
 type Story = StoryObj<typeof meta>

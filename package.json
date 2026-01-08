@@ -24,6 +24,7 @@
     "init-msw": "msw init public/"
   },
   "dependencies": {
+    "pinia": "^3.0.4",
     "vue": "^3.5.17"
   },
   "devDependencies": {
