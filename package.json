@@ -37,6 +37,7 @@
     "@vitest/browser-playwright": "^4.0.16",
     "@vitest/coverage-v8": "^4.0.16",
     "@vue/tsconfig": "^0.8.1",
+    "chromatic": "^13.3.5",
     "msw": "^2.12.7",
     "msw-storybook-addon": "^2.0.6",
     "playwright": "^1.57.0",

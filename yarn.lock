@@ -1589,7 +1589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^13.3.3":
+"chromatic@npm:^13.3.3, chromatic@npm:^13.3.5":
   version: 13.3.5
   resolution: "chromatic@npm:13.3.5"
   peerDependencies:
@@ -2279,6 +2279,7 @@ __metadata:
     "@vitest/browser-playwright": "npm:^4.0.16"
     "@vitest/coverage-v8": "npm:^4.0.16"
     "@vue/tsconfig": "npm:^0.8.1"
+    chromatic: "npm:^13.3.5"
     msw: "npm:^2.12.7"
     msw-storybook-addon: "npm:^2.0.6"
     pinia: "npm:^3.0.4"
