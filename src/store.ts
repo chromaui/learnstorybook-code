@@ -12,24 +12,13 @@ interface TaskBoxState {
 }
 
 /*
- * The initial state of our store when the app loads.
- * Usually, you would fetch this from a server. Let's not worry about that now
- */
-const defaultTasks: TaskData[] = [
-  { id: '1', title: 'Something', state: 'TASK_INBOX' },
-  { id: '2', title: 'Something more', state: 'TASK_INBOX' },
-  { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  { id: '4', title: 'Something again', state: 'TASK_INBOX' },
-]
-
-/*
  * The store is created here.
  * You can read more about Pinia defineStore in the docs:
  * https://pinia.vuejs.org/core-concepts/
  */
 export const useTaskStore = defineStore('taskbox', {
   state: (): TaskBoxState => ({
-    tasks: defaultTasks,
+    tasks: [],
     status: 'idle',
     error: null,
   }),
@@ -44,6 +33,29 @@ export const useTaskStore = defineStore('taskbox', {
       const task = this.tasks.find((task) => task.id === id)
       if (task) {
         task.state = 'TASK_PINNED'
+      }
+    },
+    async fetchTasks() {
+      this.status = 'loading'
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1')
+        const data = await response.json()
+        const result = data
+          .map((task: { id: number; title: string; completed: boolean }) => ({
+            id: `${task.id}`,
+            title: task.title,
+            state: task.completed ? 'TASK_ARCHIVED' : 'TASK_INBOX',
+          }))
+          .filter((task: TaskData) => task.state === 'TASK_INBOX' || task.state === 'TASK_PINNED')
+        this.tasks = result
+        this.status = 'succeeded'
+      } catch (error) {
+        if (error && typeof error === 'object' && 'message' in error) {
+          this.error = (error as Error).message
+        } else {
+          this.error = String(error)
+        }
+        this.status = 'failed'
       }
     },
   },
