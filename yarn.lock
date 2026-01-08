@@ -1915,7 +1915,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^13.3.3":
+"chromatic@npm:^13.3.3, chromatic@npm:^13.3.5":
   version: 13.3.5
   resolution: "chromatic@npm:13.3.5"
   peerDependencies:
@@ -2787,6 +2787,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^5.1.1"
     "@vitest/browser-playwright": "npm:^4.0.16"
     "@vitest/coverage-v8": "npm:^4.0.16"
+    chromatic: "npm:^13.3.5"
     eslint: "npm:^9.39.1"
     eslint-plugin-react-hooks: "npm:^7.0.1"
     eslint-plugin-react-refresh: "npm:^0.4.24"
