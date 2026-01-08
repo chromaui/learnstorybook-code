@@ -10,19 +10,8 @@ interface TaskBoxState {
   error: string | null;
 }
 
-/*
- * The initial state of our store when the app loads.
- * Usually, you would fetch this from a server. Let's not worry about that now
- */
-const defaultTasks: TaskData[] = [
-  { id: '1', title: 'Something', state: 'TASK_INBOX' },
-  { id: '2', title: 'Something more', state: 'TASK_INBOX' },
-  { id: '3', title: 'Something else', state: 'TASK_INBOX' },
-  { id: '4', title: 'Something again', state: 'TASK_INBOX' },
-];
-
 const initialState: TaskBoxState = {
-  tasks: defaultTasks,
+  tasks: [],
   status: 'idle',
   error: null,
 };
@@ -68,5 +57,30 @@ export class Store {
         task.id === id ? { ...task, state: 'TASK_PINNED' } : task
       ),
     }));
+  }
+  async fetchTasks(): Promise<void> {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1');
+      const data = await response.json();
+      const result = data
+        .map((task: { id: number; title: string; completed: boolean }) => ({
+          id: `${task.id}`,
+          title: task.title,
+          state: task.completed ? 'TASK_ARCHIVED' : 'TASK_INBOX',
+        }))
+        .filter((task: TaskData) => task.state === 'TASK_INBOX' || task.state === 'TASK_PINNED');
+
+      this.state.update((currentState) => ({
+        ...currentState,
+        tasks: result,
+        status: 'success',
+        error: null,
+      }));
+    } catch (error) {
+      this.state.update((currentState) => ({
+        ...currentState,
+        error: error instanceof Error ? error.message : 'Failed to fetch tasks',
+      }));
+    }
   }
 }

@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "TaskBoxState",
-            "id": "interface-TaskBoxState-21b5356781972ccc495709ecfcf28ebe9765e9079b9b16784c4035df89929b3a7be359ccc4ec455d2b76564345238c9243a9cc8bb9be18def7da1f59c484ab2e",
+            "id": "interface-TaskBoxState-5c68f62b33a0ac183a7f441ab36f72560f6e5fd05de60bb635856ea51e0f75c9335eb7e7bd1b12c9e6eb2b117559e611c0f674041979ad6e1ae58841eb42a8c8",
             "file": "src/app/state/store.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import type { TaskData } from '../types';\n\nimport { Injectable, signal, computed } from '@angular/core';\n\ninterface TaskBoxState {\n  tasks: TaskData[];\n  status: 'idle' | 'loading' | 'error' | 'success';\n  error: string | null;\n}\n\n/*\n * The initial state of our store when the app loads.\n * Usually, you would fetch this from a server. Let's not worry about that now\n */\nconst defaultTasks: TaskData[] = [\n  { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n];\n\nconst initialState: TaskBoxState = {\n  tasks: defaultTasks,\n  status: 'idle',\n  error: null,\n};\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class Store {\n  private state = signal<TaskBoxState>(initialState);\n\n  // Public readonly signal for components to subscribe to\n  readonly tasks = computed(() => this.state().tasks);\n  readonly status = computed(() => this.state().status);\n  readonly error = computed(() => this.state().error);\n\n  readonly getFilteredTasks = computed(() => {\n    const filteredTasks = this.state().tasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n    return filteredTasks;\n  });\n\n  archiveTask(id: string): void {\n    this.state.update((currentState) => {\n      const filteredTasks = currentState.tasks\n        .map(\n          (task): TaskData =>\n            task.id === id ? { ...task, state: 'TASK_ARCHIVED' as TaskData['state'] } : task\n        )\n        .filter((t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED');\n\n      return {\n        ...currentState,\n        tasks: filteredTasks,\n      };\n    });\n  }\n\n  pinTask(id: string): void {\n    this.state.update((currentState) => ({\n      ...currentState,\n      tasks: currentState.tasks.map((task) =>\n        task.id === id ? { ...task, state: 'TASK_PINNED' } : task\n      ),\n    }));\n  }\n}\n",
+            "sourceCode": "import type { TaskData } from '../types';\n\nimport { Injectable, signal, computed } from '@angular/core';\n\ninterface TaskBoxState {\n  tasks: TaskData[];\n  status: 'idle' | 'loading' | 'error' | 'success';\n  error: string | null;\n}\n\nconst initialState: TaskBoxState = {\n  tasks: [],\n  status: 'idle',\n  error: null,\n};\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class Store {\n  private state = signal<TaskBoxState>(initialState);\n\n  // Public readonly signal for components to subscribe to\n  readonly tasks = computed(() => this.state().tasks);\n  readonly status = computed(() => this.state().status);\n  readonly error = computed(() => this.state().error);\n\n  readonly getFilteredTasks = computed(() => {\n    const filteredTasks = this.state().tasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n    return filteredTasks;\n  });\n\n  archiveTask(id: string): void {\n    this.state.update((currentState) => {\n      const filteredTasks = currentState.tasks\n        .map(\n          (task): TaskData =>\n            task.id === id ? { ...task, state: 'TASK_ARCHIVED' as TaskData['state'] } : task\n        )\n        .filter((t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED');\n\n      return {\n        ...currentState,\n        tasks: filteredTasks,\n      };\n    });\n  }\n\n  pinTask(id: string): void {\n    this.state.update((currentState) => ({\n      ...currentState,\n      tasks: currentState.tasks.map((task) =>\n        task.id === id ? { ...task, state: 'TASK_PINNED' } : task\n      ),\n    }));\n  }\n  async fetchTasks(): Promise<void> {\n    try {\n      const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1');\n      const data = await response.json();\n      const result = data\n        .map((task: { id: number; title: string; completed: boolean }) => ({\n          id: `${task.id}`,\n          title: task.title,\n          state: task.completed ? 'TASK_ARCHIVED' : 'TASK_INBOX',\n        }))\n        .filter((task: TaskData) => task.state === 'TASK_INBOX' || task.state === 'TASK_PINNED');\n\n      this.state.update((currentState) => ({\n        ...currentState,\n        tasks: result,\n        status: 'success',\n        error: null,\n      }));\n    } catch (error) {\n      this.state.update((currentState) => ({\n        ...currentState,\n        error: error instanceof Error ? error.message : 'Failed to fetch tasks',\n      }));\n    }\n  }\n}\n",
             "properties": [
                 {
                     "name": "error",
@@ -75,7 +75,7 @@
     "injectables": [
         {
             "name": "Store",
-            "id": "injectable-Store-21b5356781972ccc495709ecfcf28ebe9765e9079b9b16784c4035df89929b3a7be359ccc4ec455d2b76564345238c9243a9cc8bb9be18def7da1f59c484ab2e",
+            "id": "injectable-Store-5c68f62b33a0ac183a7f441ab36f72560f6e5fd05de60bb635856ea51e0f75c9335eb7e7bd1b12c9e6eb2b117559e611c0f674041979ad6e1ae58841eb42a8c8",
             "file": "src/app/state/store.ts",
             "properties": [
                 {
@@ -87,7 +87,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 39,
+                    "line": 28,
                     "modifierKind": [
                         148
                     ]
@@ -101,7 +101,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 41,
+                    "line": 30,
                     "modifierKind": [
                         148
                     ]
@@ -115,7 +115,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 23,
                     "modifierKind": [
                         123
                     ]
@@ -129,7 +129,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 38,
+                    "line": 27,
                     "modifierKind": [
                         148
                     ]
@@ -143,7 +143,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 37,
+                    "line": 26,
                     "modifierKind": [
                         148
                     ]
@@ -163,7 +163,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -179,6 +179,19 @@
                     ]
                 },
                 {
+                    "name": "fetchTasks",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                },
+                {
                     "name": "pinTask",
                     "args": [
                         {
@@ -191,7 +204,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 64,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -211,7 +224,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import type { TaskData } from '../types';\n\nimport { Injectable, signal, computed } from '@angular/core';\n\ninterface TaskBoxState {\n  tasks: TaskData[];\n  status: 'idle' | 'loading' | 'error' | 'success';\n  error: string | null;\n}\n\n/*\n * The initial state of our store when the app loads.\n * Usually, you would fetch this from a server. Let's not worry about that now\n */\nconst defaultTasks: TaskData[] = [\n  { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n];\n\nconst initialState: TaskBoxState = {\n  tasks: defaultTasks,\n  status: 'idle',\n  error: null,\n};\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class Store {\n  private state = signal<TaskBoxState>(initialState);\n\n  // Public readonly signal for components to subscribe to\n  readonly tasks = computed(() => this.state().tasks);\n  readonly status = computed(() => this.state().status);\n  readonly error = computed(() => this.state().error);\n\n  readonly getFilteredTasks = computed(() => {\n    const filteredTasks = this.state().tasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n    return filteredTasks;\n  });\n\n  archiveTask(id: string): void {\n    this.state.update((currentState) => {\n      const filteredTasks = currentState.tasks\n        .map(\n          (task): TaskData =>\n            task.id === id ? { ...task, state: 'TASK_ARCHIVED' as TaskData['state'] } : task\n        )\n        .filter((t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED');\n\n      return {\n        ...currentState,\n        tasks: filteredTasks,\n      };\n    });\n  }\n\n  pinTask(id: string): void {\n    this.state.update((currentState) => ({\n      ...currentState,\n      tasks: currentState.tasks.map((task) =>\n        task.id === id ? { ...task, state: 'TASK_PINNED' } : task\n      ),\n    }));\n  }\n}\n",
+            "sourceCode": "import type { TaskData } from '../types';\n\nimport { Injectable, signal, computed } from '@angular/core';\n\ninterface TaskBoxState {\n  tasks: TaskData[];\n  status: 'idle' | 'loading' | 'error' | 'success';\n  error: string | null;\n}\n\nconst initialState: TaskBoxState = {\n  tasks: [],\n  status: 'idle',\n  error: null,\n};\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class Store {\n  private state = signal<TaskBoxState>(initialState);\n\n  // Public readonly signal for components to subscribe to\n  readonly tasks = computed(() => this.state().tasks);\n  readonly status = computed(() => this.state().status);\n  readonly error = computed(() => this.state().error);\n\n  readonly getFilteredTasks = computed(() => {\n    const filteredTasks = this.state().tasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n    return filteredTasks;\n  });\n\n  archiveTask(id: string): void {\n    this.state.update((currentState) => {\n      const filteredTasks = currentState.tasks\n        .map(\n          (task): TaskData =>\n            task.id === id ? { ...task, state: 'TASK_ARCHIVED' as TaskData['state'] } : task\n        )\n        .filter((t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED');\n\n      return {\n        ...currentState,\n        tasks: filteredTasks,\n      };\n    });\n  }\n\n  pinTask(id: string): void {\n    this.state.update((currentState) => ({\n      ...currentState,\n      tasks: currentState.tasks.map((task) =>\n        task.id === id ? { ...task, state: 'TASK_PINNED' } : task\n      ),\n    }));\n  }\n  async fetchTasks(): Promise<void> {\n    try {\n      const response = await fetch('https://jsonplaceholder.typicode.com/todos?userId=1');\n      const data = await response.json();\n      const result = data\n        .map((task: { id: number; title: string; completed: boolean }) => ({\n          id: `${task.id}`,\n          title: task.title,\n          state: task.completed ? 'TASK_ARCHIVED' : 'TASK_INBOX',\n        }))\n        .filter((task: TaskData) => task.state === 'TASK_INBOX' || task.state === 'TASK_PINNED');\n\n      this.state.update((currentState) => ({\n        ...currentState,\n        tasks: result,\n        status: 'success',\n        error: null,\n      }));\n    } catch (error) {\n      this.state.update((currentState) => ({\n        ...currentState,\n        error: error instanceof Error ? error.message : 'Failed to fetch tasks',\n      }));\n    }\n  }\n}\n",
             "extends": [],
             "type": "injectable"
         }
@@ -223,7 +236,7 @@
     "components": [
         {
             "name": "App",
-            "id": "component-App-29e1eb3fa6e40a69fa653577e9e1c5eca979ae8dab34ca28dfc67fbaabee9b3da9e40081fe5eedbe01d8596d95fd8d7e433f8e4277950af33f169b2bf9334b5f",
+            "id": "component-App-b603350c13ad03cf0d891aa991793efa6aef0a2e93e73378388702f9547553a01be24069fd4a362502b8aeb6ef2ceae15c1fd142b3ca42f229396b5d27e21c16",
             "file": "src/app/app.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -233,9 +246,8 @@
             "selector": "app-root",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./app.html"
-            ],
+            "template": "<app-inbox-screen></app-inbox-screen>",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
@@ -265,19 +277,18 @@
             "standalone": false,
             "imports": [
                 {
-                    "name": "RouterOutlet"
+                    "name": "InboxScreenComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  templateUrl: './app.html',\n  styleUrl: './app.css',\n})\nexport class App {\n  protected readonly title = signal('taskbox');\n}\n",
-            "styleUrl": "./app.css",
+            "sourceCode": "import { Component, signal } from '@angular/core';\n\nimport { InboxScreenComponent } from './components/inbox-screen.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [InboxScreenComponent],\n  template: `<app-inbox-screen></app-inbox-screen>`,\n})\nexport class App {\n  protected readonly title = signal('taskbox');\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->\n<!-- * * * * * * * to get started with your project! * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<style>\n  :host {\n    --bright-blue: oklch(51.01% 0.274 263.83);\n    --electric-violet: oklch(53.18% 0.28 296.97);\n    --french-violet: oklch(47.66% 0.246 305.88);\n    --vivid-pink: oklch(69.02% 0.277 332.77);\n    --hot-red: oklch(61.42% 0.238 15.34);\n    --orange-red: oklch(63.32% 0.24 31.68);\n\n    --gray-900: oklch(19.37% 0.006 300.98);\n    --gray-700: oklch(36.98% 0.014 302.71);\n    --gray-400: oklch(70.9% 0.015 304.04);\n\n    --red-to-pink-to-purple-vertical-gradient: linear-gradient(\n      180deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(\n      90deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --pill-accent: var(--bright-blue);\n\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,\n      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n    box-sizing: border-box;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n\n  h1 {\n    font-size: 3.125rem;\n    color: var(--gray-900);\n    font-weight: 500;\n    line-height: 100%;\n    letter-spacing: -0.125rem;\n    margin: 0;\n    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,\n      Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n  }\n\n  p {\n    margin: 0;\n    color: var(--gray-700);\n  }\n\n  main {\n    width: 100%;\n    min-height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 1rem;\n    box-sizing: inherit;\n    position: relative;\n  }\n\n  .angular-logo {\n    max-width: 9.2rem;\n  }\n\n  .content {\n    display: flex;\n    justify-content: space-around;\n    width: 100%;\n    max-width: 700px;\n    margin-bottom: 3rem;\n  }\n\n  .content h1 {\n    margin-top: 1.75rem;\n  }\n\n  .content p {\n    margin-top: 1.5rem;\n  }\n\n  .divider {\n    width: 1px;\n    background: var(--red-to-pink-to-purple-vertical-gradient);\n    margin-inline: 0.5rem;\n  }\n\n  .pill-group {\n    display: flex;\n    flex-direction: column;\n    align-items: start;\n    flex-wrap: wrap;\n    gap: 1.25rem;\n  }\n\n  .pill {\n    display: flex;\n    align-items: center;\n    --pill-accent: var(--bright-blue);\n    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);\n    color: var(--pill-accent);\n    padding-inline: 0.75rem;\n    padding-block: 0.375rem;\n    border-radius: 2.75rem;\n    border: 0;\n    transition: background 0.3s ease;\n    font-family: var(--inter-font);\n    font-size: 0.875rem;\n    font-style: normal;\n    font-weight: 500;\n    line-height: 1.4rem;\n    letter-spacing: -0.00875rem;\n    text-decoration: none;\n    white-space: nowrap;\n  }\n\n  .pill:hover {\n    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);\n  }\n\n  .pill-group .pill:nth-child(6n + 1) {\n    --pill-accent: var(--bright-blue);\n  }\n  .pill-group .pill:nth-child(6n + 2) {\n    --pill-accent: var(--electric-violet);\n  }\n  .pill-group .pill:nth-child(6n + 3) {\n    --pill-accent: var(--french-violet);\n  }\n\n  .pill-group .pill:nth-child(6n + 4),\n  .pill-group .pill:nth-child(6n + 5),\n  .pill-group .pill:nth-child(6n + 6) {\n    --pill-accent: var(--hot-red);\n  }\n\n  .pill-group svg {\n    margin-inline-start: 0.25rem;\n  }\n\n  .social-links {\n    display: flex;\n    align-items: center;\n    gap: 0.73rem;\n    margin-top: 1.5rem;\n  }\n\n  .social-links path {\n    transition: fill 0.3s ease;\n    fill: var(--gray-400);\n  }\n\n  .social-links a:hover svg path {\n    fill: var(--gray-900);\n  }\n\n  @media screen and (max-width: 650px) {\n    .content {\n      flex-direction: column;\n      width: max-content;\n    }\n\n    .divider {\n      height: 1px;\n      width: 100%;\n      background: var(--red-to-pink-to-purple-horizontal-gradient);\n      margin-block: 1.5rem;\n    }\n  }\n</style>\n\n<main class=\"main\">\n  <div class=\"content\">\n    <div class=\"left-side\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        viewBox=\"0 0 982 239\"\n        fill=\"none\"\n        class=\"angular-logo\"\n      >\n        <g clip-path=\"url(#a)\">\n          <path\n            fill=\"url(#b)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n          <path\n            fill=\"url(#c)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n        </g>\n        <defs>\n          <radialGradient\n            id=\"c\"\n            cx=\"0\"\n            cy=\"0\"\n            r=\"1\"\n            gradientTransform=\"rotate(118.122 171.182 60.81) scale(205.794)\"\n            gradientUnits=\"userSpaceOnUse\"\n          >\n            <stop stop-color=\"#FF41F8\" />\n            <stop offset=\".707\" stop-color=\"#FF41F8\" stop-opacity=\".5\" />\n            <stop offset=\"1\" stop-color=\"#FF41F8\" stop-opacity=\"0\" />\n          </radialGradient>\n          <linearGradient id=\"b\" x1=\"0\" x2=\"982\" y1=\"192\" y2=\"192\" gradientUnits=\"userSpaceOnUse\">\n            <stop stop-color=\"#F0060B\" />\n            <stop offset=\"0\" stop-color=\"#F0070C\" />\n            <stop offset=\".526\" stop-color=\"#CC26D5\" />\n            <stop offset=\"1\" stop-color=\"#7702FF\" />\n          </linearGradient>\n          <clipPath id=\"a\"><path fill=\"#fff\" d=\"M0 0h982v239H0z\" /></clipPath>\n        </defs>\n      </svg>\n      <h1>Hello, {{ title() }}</h1>\n      <p>Congratulations! Your app is running. 🎉</p>\n    </div>\n    <div class=\"divider\" role=\"separator\" aria-label=\"Divider\"></div>\n    <div class=\"right-side\">\n      <div class=\"pill-group\">\n        @for (item of [ { title: 'Explore the Docs', link: 'https://angular.dev' }, { title: 'Learn\n        with Tutorials', link: 'https://angular.dev/tutorials' }, { title: 'Prompt and best\n        practices for AI', link: 'https://angular.dev/ai/develop-with-ai'}, { title: 'CLI Docs',\n        link: 'https://angular.dev/tools/cli' }, { title: 'Angular Language Service', link:\n        'https://angular.dev/tools/language-service' }, { title: 'Angular DevTools', link:\n        'https://angular.dev/tools/devtools' }, ]; track item.title) {\n        <a class=\"pill\" [href]=\"item.link\" target=\"_blank\" rel=\"noopener\">\n          <span>{{ item.title }}</span>\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            height=\"14\"\n            viewBox=\"0 -960 960 960\"\n            width=\"14\"\n            fill=\"currentColor\"\n          >\n            <path\n              d=\"M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z\"\n            />\n          </svg>\n        </a>\n        }\n      </div>\n      <div class=\"social-links\">\n        <a\n          href=\"https://github.com/angular/angular\"\n          aria-label=\"Github\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"25\"\n            height=\"24\"\n            viewBox=\"0 0 25 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Github\"\n          >\n            <path\n              d=\"M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z\"\n            />\n          </svg>\n        </a>\n        <a href=\"https://x.com/angular\" aria-label=\"X\" target=\"_blank\" rel=\"noopener\">\n          <svg\n            width=\"24\"\n            height=\"24\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"X\"\n          >\n            <path\n              d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"\n            />\n          </svg>\n        </a>\n        <a\n          href=\"https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw\"\n          aria-label=\"Youtube\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"29\"\n            height=\"20\"\n            viewBox=\"0 0 29 20\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Youtube\"\n          >\n            <path\n              fill-rule=\"evenodd\"\n              clip-rule=\"evenodd\"\n              d=\"M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z\"\n            />\n          </svg>\n        </a>\n      </div>\n    </div>\n  </div>\n</main>\n\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<router-outlet />\n"
+            "extends": []
         },
         {
             "name": "ButtonComponent",
@@ -498,6 +509,87 @@
             ],
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "InboxScreenComponent",
+            "id": "component-InboxScreenComponent-a31e2c481025cb92da020d8efd4588eef9f9b28ab1fd6c38b30a42143738d83d8789ea95bdb4d1c353b96788b7c468e681f4aa5b1c560b08033af1d2f2d09fa7",
+            "file": "src/app/components/inbox-screen.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-inbox-screen",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div *ngIf=\"isError()\" class=\"page lists-show\">\n  <div class=\"wrapper-message\">\n    <span class=\"icon-face-sad\"></span>\n    <p class=\"title-message\">Oh no!</p>\n    <p class=\"subtitle-message\">Something went wrong</p>\n  </div>\n</div>\n\n<div *ngIf=\"!isError()\" class=\"page lists-show\">\n  <nav>\n    <h1 class=\"title-page\">Taskbox</h1>\n  </nav>\n  <app-task-list></app-task-list>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isError",
+                    "defaultValue": "computed(() => this.store.status() === 'error')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "store",
+                    "defaultValue": "inject(Store)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TaskListComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, inject, OnInit, computed } from '@angular/core';\n\nimport { Store } from '../state/store';\n\nimport { TaskListComponent } from './task-list.component';\n\n@Component({\n  selector: 'app-inbox-screen',\n  standalone: true,\n  imports: [CommonModule, TaskListComponent],\n  template: `\n    <div *ngIf=\"isError()\" class=\"page lists-show\">\n      <div class=\"wrapper-message\">\n        <span class=\"icon-face-sad\"></span>\n        <p class=\"title-message\">Oh no!</p>\n        <p class=\"subtitle-message\">Something went wrong</p>\n      </div>\n    </div>\n\n    <div *ngIf=\"!isError()\" class=\"page lists-show\">\n      <nav>\n        <h1 class=\"title-page\">Taskbox</h1>\n      </nav>\n      <app-task-list></app-task-list>\n    </div>\n  `,\n})\nexport class InboxScreenComponent implements OnInit {\n  store = inject(Store);\n\n  isError = computed(() => this.store.status() === 'error');\n\n  ngOnInit(): void {\n    this.store.fetchTasks();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ]
         },
         {
             "name": "PageComponent",
@@ -857,16 +949,6 @@
                 "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(),\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideRouter(routes)\n  ]\n}"
             },
             {
-                "name": "defaultTasks",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/state/store.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "TaskData[]",
-                "defaultValue": "[\n  { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n]"
-            },
-            {
                 "name": "initialState",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -874,7 +956,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "TaskBoxState",
-                "defaultValue": "{\n  tasks: defaultTasks,\n  status: 'idle',\n  error: null,\n}"
+                "defaultValue": "{\n  tasks: [],\n  status: 'idle',\n  error: null,\n}"
             },
             {
                 "name": "routes",
@@ -917,16 +999,6 @@
             ],
             "src/app/state/store.ts": [
                 {
-                    "name": "defaultTasks",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/state/store.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TaskData[]",
-                    "defaultValue": "[\n  { id: '1', title: 'Something', state: 'TASK_INBOX' },\n  { id: '2', title: 'Something more', state: 'TASK_INBOX' },\n  { id: '3', title: 'Something else', state: 'TASK_INBOX' },\n  { id: '4', title: 'Something again', state: 'TASK_INBOX' },\n]"
-                },
-                {
                     "name": "initialState",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -934,7 +1006,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "TaskBoxState",
-                    "defaultValue": "{\n  tasks: defaultTasks,\n  status: 'idle',\n  error: null,\n}"
+                    "defaultValue": "{\n  tasks: [],\n  status: 'idle',\n  error: null,\n}"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -1007,6 +1079,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/inbox-screen.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InboxScreenComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/pure-task-list.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -1039,7 +1120,7 @@
                 "linktype": "injectable",
                 "name": "Store",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -1049,16 +1130,6 @@
                 "name": "TaskBoxState",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/state/store.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "defaultTasks",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
                 "status": "low"
             },
             {
