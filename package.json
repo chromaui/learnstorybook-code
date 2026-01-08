@@ -19,7 +19,8 @@
     "test": "ng test",
     "storybook": "ng run taskbox:storybook",
     "build-storybook": "ng run taskbox:build-storybook",
-    "init-msw": "msw init public/"
+    "init-msw": "msw init public/",
+    "test-storybook": "test-storybook"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +46,7 @@
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/angular": "^10.1.11",
+    "@storybook/test-runner": "^0.24.2",
     "jsdom": "^27.1.0",
     "msw": "^2.12.7",
     "msw-storybook-addon": "^2.0.6",
