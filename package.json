@@ -47,6 +47,7 @@
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/angular": "^10.1.11",
     "@storybook/test-runner": "^0.24.2",
+    "chromatic": "^13.3.5",
     "jsdom": "^27.1.0",
     "msw": "^2.12.7",
     "msw-storybook-addon": "^2.0.6",

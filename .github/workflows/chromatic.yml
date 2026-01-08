@@ -1,0 +1,28 @@
+# Workflow name
+name: 'Chromatic Deployment'
+
+# Event for the workflow
+on: push
+
+# List of jobs
+jobs:
+  test:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: 'Run Chromatic'
+        uses: chromaui/action@latest
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/angular/en/deploy/ to obtain it
+          projectToken: t1lqdxy63up
+          token: ${{ secrets.GITHUB_TOKEN }}
