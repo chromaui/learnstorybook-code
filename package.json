@@ -63,5 +63,10 @@
         }
       }
     ]
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
