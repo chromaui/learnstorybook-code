@@ -1,3 +1,5 @@
+import type { TaskData } from '../types';
+
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -46,7 +48,7 @@ export class TaskComponent {
   /**
    * The shape of the task object
    */
-  @Input() task: any;
+  @Input() task?: TaskData;
 
   /**
    * Event handler for pinning tasks
