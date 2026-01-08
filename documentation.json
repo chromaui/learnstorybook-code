@@ -479,7 +479,7 @@
         },
         {
             "name": "TaskListComponent",
-            "id": "component-TaskListComponent-179748cd9de414d839447661017013b6c8ade72365ca42804d16c50b9884ad2d8c08c6f08aed778f48bb7c5b0fc044f3a00570456f0fbecfa21f3b49b578550c",
+            "id": "component-TaskListComponent-322d8f05d2075cc27c74d9a901747c46c97980dc979706260ead1fc81f40cf9168240287fce637207058a769a13a5845a96689879ea983ae263020e5f6a2cc70",
             "file": "src/app/components/task-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -489,7 +489,7 @@
             "selector": "app-task-list",
             "styleUrls": [],
             "styles": [],
-            "template": "<div class=\"list-items\">\n  <div *ngIf=\"loading\">loading</div>\n  <div *ngIf=\"!loading && tasks.length === 0\">empty</div>\n  <app-task\n    *ngFor=\"let task of tasks\"\n    [task]=\"task\"\n    (onArchiveTask)=\"onArchiveTask.emit($event)\"\n    (onPinTask)=\"onPinTask.emit($event)\"\n  >\n  </app-task>\n</div>\n",
+            "template": "<div class=\"list-items\">\n  <app-task\n    *ngFor=\"let task of tasksInOrder\"\n    [task]=\"task\"\n    (onArchiveTask)=\"onArchiveTask.emit($event)\"\n    (onPinTask)=\"onPinTask.emit($event)\"\n  >\n  </app-task>\n  <div\n    *ngIf=\"tasksInOrder.length === 0 && !loading\"\n    class=\"wrapper-message\"\n    data-testid=\"empty\"\n  >\n    <span class=\"icon-check\"></span>\n    <p class=\"title-message\">You have no tasks</p>\n    <p class=\"subtitle-message\">Sit back and relax</p>\n  </div>\n  <div *ngIf=\"loading\">\n    <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n      <span class=\"glow-checkbox\"></span>\n      <span class=\"glow-text\"> <span>Loading</span> <span>cool</span> <span>state</span> </span>\n    </div>\n  </div>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -501,18 +501,17 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nChecks if it's in loading state\n",
                     "description": "<p>Checks if it&#39;s in loading state</p>\n",
-                    "line": 35,
+                    "line": 49,
                     "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "tasks",
-                    "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nThe list of tasks\n",
                     "description": "<p>The list of tasks</p>\n",
-                    "line": 30,
+                    "line": 67,
                     "type": "TaskData[]",
                     "decorators": []
                 }
@@ -525,7 +524,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEvent to change the task to archived\n",
                     "description": "<p>Event to change the task to archived</p>\n",
-                    "line": 47,
+                    "line": 61,
                     "type": "EventEmitter"
                 },
                 {
@@ -535,7 +534,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nEvent to change the task to pinned\n",
                     "description": "<p>Event to change the task to pinned</p>\n",
-                    "line": 41,
+                    "line": 55,
                     "type": "EventEmitter"
                 }
             ],
@@ -559,11 +558,45 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import type { TaskData } from '../types';\n\nimport { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { TaskComponent } from './task.component';\n\n@Component({\n  selector: 'app-task-list',\n  standalone: true,\n  imports: [CommonModule, TaskComponent],\n  template: `\n    <div class=\"list-items\">\n      <div *ngIf=\"loading\">loading</div>\n      <div *ngIf=\"!loading && tasks.length === 0\">empty</div>\n      <app-task\n        *ngFor=\"let task of tasks\"\n        [task]=\"task\"\n        (onArchiveTask)=\"onArchiveTask.emit($event)\"\n        (onPinTask)=\"onPinTask.emit($event)\"\n      >\n      </app-task>\n    </div>\n  `,\n})\nexport class TaskListComponent {\n  /**\n   * The list of tasks\n   */\n  @Input() tasks: TaskData[] = [];\n\n  /**\n   * Checks if it's in loading state\n   */\n  @Input() loading = false;\n\n  /**\n   * Event to change the task to pinned\n   */\n  @Output()\n  onPinTask = new EventEmitter<Event>();\n\n  /**\n   * Event to change the task to archived\n   */\n  @Output()\n  onArchiveTask = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import type { TaskData } from '../types';\n\nimport { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\nimport { TaskComponent } from './task.component';\n\n@Component({\n  selector: 'app-task-list',\n  standalone: true,\n  imports: [CommonModule, TaskComponent],\n  template: `\n    <div class=\"list-items\">\n      <app-task\n        *ngFor=\"let task of tasksInOrder\"\n        [task]=\"task\"\n        (onArchiveTask)=\"onArchiveTask.emit($event)\"\n        (onPinTask)=\"onPinTask.emit($event)\"\n      >\n      </app-task>\n      <div\n        *ngIf=\"tasksInOrder.length === 0 && !loading\"\n        class=\"wrapper-message\"\n        data-testid=\"empty\"\n      >\n        <span class=\"icon-check\"></span>\n        <p class=\"title-message\">You have no tasks</p>\n        <p class=\"subtitle-message\">Sit back and relax</p>\n      </div>\n      <div *ngIf=\"loading\">\n        <div *ngFor=\"let i of [1, 2, 3, 4, 5, 6]\" class=\"loading-item\">\n          <span class=\"glow-checkbox\"></span>\n          <span class=\"glow-text\"> <span>Loading</span> <span>cool</span> <span>state</span> </span>\n        </div>\n      </div>\n    </div>\n  `,\n})\nexport class TaskListComponent {\n  /**\n   * @ignore\n   * Component property to define ordering of tasks\n   */\n  tasksInOrder: TaskData[] = [];\n\n  /**\n   * Checks if it's in loading state\n   */\n  @Input() loading = false;\n\n  /**\n   * Event to change the task to pinned\n   */\n  @Output()\n  onPinTask = new EventEmitter<Event>();\n\n  /**\n   * Event to change the task to archived\n   */\n  @Output()\n  onArchiveTask = new EventEmitter<Event>();\n\n  /**\n   * The list of tasks\n   */\n  @Input()\n  set tasks(arr: TaskData[]) {\n    const initialTasks = [\n      ...arr.filter((t) => t.state === 'TASK_PINNED'),\n      ...arr.filter((t) => t.state !== 'TASK_PINNED'),\n    ];\n    const filteredTasks = initialTasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n    this.tasksInOrder = filteredTasks.filter(\n      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'\n    );\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "accessors": {
+                "tasks": {
+                    "name": "tasks",
+                    "setSignature": {
+                        "name": "tasks",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "arr",
+                                "type": "TaskData[]",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 67,
+                        "rawdescription": "\n\nThe list of tasks\n",
+                        "description": "<p>The list of tasks</p>\n",
+                        "jsdoctags": [
+                            {
+                                "name": "arr",
+                                "type": "TaskData[]",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
         }
     ],
     "modules": [],
