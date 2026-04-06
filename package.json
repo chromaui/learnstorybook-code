@@ -52,7 +52,7 @@
     "storybook": "^10.1.11",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4",
+    "vite": "^7.3.2",
     "vitest": "^4.0.16"
   },
   "resolutions": {
